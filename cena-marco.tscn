@@ -1,0 +1,118 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://script-marco.gd" type="Script" id=1]
+[ext_resource path="res://imagens/png jogo.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 15.1255, 28.1349 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "Agaixar"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("png jogo:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 2,
+"values": [ Rect2( 2475, 4615, 232, 170 ), Rect2( 2708, 4608, 232, 170 ), Rect2( 3048, 4416, 239, 170 ), Rect2( 3392, 4416, 232, 170 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Andando"
+length = 0.9
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("png jogo:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 2,
+"values": [ Rect2( 1520, 17, 211, 279 ), Rect2( 1946, 10, 198, 287 ), Rect2( 2387, 17, 225, 279 ), Rect2( 2846, 10, 225, 287 ), Rect2( 3287, 17, 191, 279 ), Rect2( 3699, 5, 204, 280 ), Rect2( 4120, 5, 225, 280 ), Rect2( 4512, 5, 252, 259 ), Rect2( 4968, 6, 218, 279 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Atirando"
+length = 0.25
+loop = true
+step = 0.02
+tracks/0/type = "value"
+tracks/0/path = NodePath("png jogo:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.06, 0.12, 0.18 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 2,
+"values": [ Rect2( 677, 504, 355, 259 ), Rect2( 272, 489, 348, 259 ), Rect2( 1093, 504, 260, 259 ), Rect2( 1445, 500, 260, 272 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("png jogo:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 2,
+"values": [ Rect2( 72, 10, 211, 266 ), Rect2( 501, 10, 205, 266 ), Rect2( 857, 10, 205, 266 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "pulando"
+tracks/0/type = "value"
+tracks/0/path = NodePath("png jogo:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 2,
+"values": [ Rect2( 47, 1925, 204, 335 ), Rect2( 358, 1906, 204, 321 ), Rect2( 677, 1908, 204, 307 ), Rect2( 1056, 1918, 207, 287 ), Rect2( 1472, 1910, 205, 259 ), Rect2( 1846, 1902, 204, 252 ), Rect2( 2279, 1886, 204, 259 ), Rect2( 2709, 1878, 205, 286 ), Rect2( 3080, 1861, 204, 305 ) ]
+}
+
+[node name="Node2D" type="Node2D"]
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+position = Vector2( 98.5, 507.5 )
+scale = Vector2( 1.00518, 1.00171 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="png jogo" type="Sprite" parent="KinematicBody2D"]
+scale = Vector2( 0.245969, 0.246821 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 2475, 4615, 232, 170 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
+shape = SubResource( 1 )
+one_way_collision = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="KinematicBody2D"]
+autoplay = "Descansando"
+anims/Agaixar = SubResource( 6 )
+anims/Andando = SubResource( 2 )
+anims/Atirando = SubResource( 4 )
+anims/Descansando = SubResource( 3 )
+anims/pulando = SubResource( 5 )
