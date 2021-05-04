@@ -1,5 +1,6 @@
 extends KinematicBody2D
 
+const cena_tiro = preload("res://cena-tiro.tscn")
 const velocidade = 150
 const velPulo = 400
 const gravidade = 800
@@ -28,8 +29,9 @@ func _physics_process(delta):
 	if esquerda:
 		andar.x = -velocidade
 		if posicao == "direita":
-			scale.x *= -1
 			posicao = "esquerda"
+			scale.x *= -1
+			$Position2D.scale.x *= -1
 			
 		if noChao==true:
 			$AnimationPlayer.play("Andando")
@@ -39,6 +41,7 @@ func _physics_process(delta):
 		if posicao == "esquerda":
 			posicao = "direita"
 			scale.x *= -1
+			$Position2D.scale.x *= -1
 		
 		if noChao==true:
 			$AnimationPlayer.play("Andando")
@@ -56,13 +59,22 @@ func _physics_process(delta):
 		andar.y = velocidadeY
 	noChao = true
 	
-	move_and_slide(andar)
-	
 	if tiro:
 		$AnimationPlayer.play("Atirando")
+		var objeto_tiro = cena_tiro.instance()
+		
+		#Essa parte deveria fazer o tiro ir para ambos os lados, mas não reconhece a função de inverter da cena tiro
+		if posicao == "direita":
+			objeto_tiro.setar_direcao(1)
+		else:
+			objeto_tiro.setar_direcao(-1)
+		
+		objeto_tiro.global_position = $Position2D.global_position
+		get_tree().root.add_child(objeto_tiro)
+	
+	move_and_slide(andar)
 	
 	if baixo:
-		print("agaixando")
 		$AnimationPlayer.play("Agaixar")
 		scale.y = 0.6
 	if soltouBaixo:

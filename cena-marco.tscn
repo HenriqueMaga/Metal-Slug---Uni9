@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 15.1255, 28.1349 )
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=2]
 resource_name = "Agaixar"
 length = 0.4
 loop = true
@@ -23,8 +23,7 @@ tracks/0/keys = {
 "values": [ Rect2( 2475, 4615, 232, 170 ), Rect2( 2708, 4608, 232, 170 ), Rect2( 3048, 4416, 239, 170 ), Rect2( 3392, 4416, 232, 170 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "Andando"
+[sub_resource type="Animation" id=3]
 length = 0.9
 loop = true
 tracks/0/type = "value"
@@ -58,7 +57,7 @@ tracks/0/keys = {
 "values": [ Rect2( 677, 504, 355, 259 ), Rect2( 272, 489, 348, 259 ), Rect2( 1093, 504, 260, 259 ), Rect2( 1445, 500, 260, 272 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=5]
 length = 0.5
 loop = true
 tracks/0/type = "value"
@@ -74,8 +73,7 @@ tracks/0/keys = {
 "values": [ Rect2( 72, 10, 211, 266 ), Rect2( 501, 10, 205, 266 ), Rect2( 857, 10, 205, 266 ) ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "pulando"
+[sub_resource type="Animation" id=6]
 tracks/0/type = "value"
 tracks/0/path = NodePath("png jogo:region_rect")
 tracks/0/interp = 1
@@ -95,24 +93,25 @@ tracks/0/keys = {
 position = Vector2( 98.5, 507.5 )
 scale = Vector2( 1.00518, 1.00171 )
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="png jogo" type="Sprite" parent="KinematicBody2D"]
 scale = Vector2( 0.245969, 0.246821 )
 texture = ExtResource( 2 )
 region_enabled = true
-region_rect = Rect2( 2475, 4615, 232, 170 )
+region_rect = Rect2( 1445, 500, 260, 272 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
+position = Vector2( 0.351723, -0.352966 )
 shape = SubResource( 1 )
 one_way_collision = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="KinematicBody2D"]
 autoplay = "Descansando"
-anims/Agaixar = SubResource( 6 )
-anims/Andando = SubResource( 2 )
+anims/Agaixar = SubResource( 2 )
+anims/Andando = SubResource( 3 )
 anims/Atirando = SubResource( 4 )
-anims/Descansando = SubResource( 3 )
-anims/pulando = SubResource( 5 )
+anims/Descansando = SubResource( 5 )
+anims/pulando = SubResource( 6 )
+
+[node name="Position2D" type="Position2D" parent="KinematicBody2D"]
+position = Vector2( 17.9383, -13.0592 )
