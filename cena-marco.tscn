@@ -42,7 +42,6 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=4]
 resource_name = "Atirando"
 length = 0.25
-loop = true
 step = 0.02
 tracks/0/type = "value"
 tracks/0/path = NodePath("png jogo:region_rect")

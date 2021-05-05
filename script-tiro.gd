@@ -16,6 +16,6 @@ func _process(delta):
 	mov.x = velocidade * delta * direcao
 	translate(mov)
 
-#func colisao(area):
-	#if(area.name == "Inimigo"):
-		#queue_free()
+func colisao(area):
+	if(area.name == "Inimigo"):
+		queue_free()
