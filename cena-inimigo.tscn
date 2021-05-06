@@ -25,6 +25,8 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=3]
 resource_name = "Atirando"
+length = 0.6
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
 tracks/0/interp = 1
@@ -32,7 +34,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9 ),
+"times": PoolRealArray( 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 2,
 "values": [ Rect2( 266, 57, 24, 38 ), Rect2( 301, 57, 23, 38 ), Rect2( 338, 57, 26, 38 ), Rect2( 374, 57, 31, 38 ), Rect2( 414, 57, 38, 38 ), Rect2( 462, 51, 56, 44 ), Rect2( 527, 56, 56, 39 ), Rect2( 611, 57, 37, 38 ), Rect2( 678, 57, 38, 38 ) ]
@@ -57,24 +59,30 @@ tracks/0/keys = {
 [node name="Node2D" type="Node2D"]
 position = Vector2( -0.125, 0.125 )
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Inimigo" type="Area2D" parent="."]
 script = ExtResource( 2 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( 0.125, 0 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Inimigo"]
 shape = SubResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="Area2D"]
+[node name="Sprite" type="Sprite" parent="Inimigo"]
 scale = Vector2( 1.425, 1.425 )
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 67, 718, 25, 25 )
+region_rect = Rect2( 678, 57, 38, 38 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Area2D"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Inimigo"]
 autoplay = "Andando"
 anims/Andando = SubResource( 2 )
 anims/Atirando = SubResource( 3 )
 anims/Morrendo = SubResource( 4 )
 
-[connection signal="body_entered" from="Area2D" to="Area2D" method="colisao"]
-[connection signal="animation_finished" from="Area2D/AnimationPlayer" to="Area2D" method="excluir_definitivamente"]
+[node name="Position2D" type="Position2D" parent="Inimigo"]
+position = Vector2( -17, -12.625 )
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="body_entered" from="Inimigo" to="Inimigo" method="colisao"]
+[connection signal="animation_finished" from="Inimigo/AnimationPlayer" to="Inimigo" method="finalizar_acao"]
+[connection signal="timeout" from="Timer" to="Inimigo" method="atirar"]

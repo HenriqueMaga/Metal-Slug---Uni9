@@ -1,4 +1,4 @@
-extends Sprite
+extends Node2D
 
 
 func _ready():
@@ -6,10 +6,24 @@ func _ready():
 
 
 func cria_inimigo():
+	var direcao = rand_range(0,4)
 	var objeto_inimigo = preload("res://cena-inimigo.tscn").instance()
-	objeto_inimigo.global_position.x = 900
-	objeto_inimigo.global_position.y = 500
+	
+	if direcao < 1:
+		objeto_inimigo.global_position = $esquerdaB.global_position
+		objeto_inimigo.get_node("Inimigo").setar_direcao(-1)
+		
+	elif direcao < 2:
+		objeto_inimigo.global_position = $esquerdaC.global_position
+		objeto_inimigo.get_node("Inimigo").setar_direcao(-1)
+		
+	elif direcao < 3:
+		objeto_inimigo.global_position = $direitaB.global_position
+		
+	elif direcao < 4:
+		objeto_inimigo.global_position = $direitaC.global_position
 	
 	get_tree().root.add_child(objeto_inimigo)
+	print("Nascendo")
 #func _process(delta):
 #	pass

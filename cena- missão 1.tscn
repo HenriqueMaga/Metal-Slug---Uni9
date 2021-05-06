@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://imagens/Mapa missão 1.jpeg" type="Texture" id=1]
 [ext_resource path="res://cena-marco.tscn" type="PackedScene" id=2]
@@ -7,26 +7,77 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 645.027, 36.9518 )
 
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 202.834, 10.1288 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 97.6871, 15.9273 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 251.13, 16.2102 )
+
 [node name="Node2D" type="Node2D"]
+script = ExtResource( 3 )
 
 [node name="Mapa missão 1" type="Sprite" parent="."]
-position = Vector2( 746.921, 292.36 )
+position = Vector2( 826.824, 292.501 )
 scale = Vector2( 2.81699, 2.81718 )
 texture = ExtResource( 1 )
-script = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Marco" parent="." instance=ExtResource( 2 )]
 position = Vector2( 95.481, -7.00006 )
 
-[node name="chao" type="Node2D" parent="."]
+[node name="chao-principal" type="Node2D" parent="."]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="chao"]
+[node name="StaticBody2D" type="StaticBody2D" parent="chao-principal"]
 position = Vector2( 611.649, 564.273 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="chao/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chao-principal/StaticBody2D"]
 shape = SubResource( 1 )
 
 [node name="Tempo_Inimigo" type="Timer" parent="."]
 autostart = true
 
-[connection signal="timeout" from="Tempo_Inimigo" to="Mapa missão 1" method="cria_inimigo"]
+[node name="chao-direita" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="chao-direita"]
+position = Vector2( 611.649, 564.273 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chao-direita/StaticBody2D"]
+position = Vector2( 232.285, -254.559 )
+shape = SubResource( 2 )
+
+[node name="chao-meio" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="chao-meio"]
+position = Vector2( 611.649, 564.273 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chao-meio/StaticBody2D"]
+position = Vector2( -48.4369, -137.533 )
+shape = SubResource( 3 )
+
+[node name="chao-esquerda" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="chao-esquerda"]
+position = Vector2( 611.649, 564.273 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chao-esquerda/StaticBody2D"]
+position = Vector2( -392.445, -254.205 )
+shape = SubResource( 4 )
+
+[node name="direitaC" type="Position2D" parent="."]
+position = Vector2( 1036.27, 263.398 )
+
+[node name="direitaB" type="Position2D" parent="."]
+position = Vector2( 1065.97, 487.905 )
+
+[node name="esquerdaC" type="Position2D" parent="."]
+position = Vector2( -15.2029, 258.448 )
+
+[node name="esquerdaB" type="Position2D" parent="."]
+position = Vector2( -22.2739, 491.794 )
+
+[connection signal="timeout" from="Tempo_Inimigo" to="." method="cria_inimigo"]

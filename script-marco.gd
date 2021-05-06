@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 const cena_tiro = preload("res://cena-tiro.tscn")
 const velocidade = 150
-const velPulo = 400
+const velPulo = 500
 const gravidade = 800
 
 var velocidadeY = 0
@@ -63,11 +63,11 @@ func _physics_process(delta):
 		$AnimationPlayer.play("Atirando")
 		var objeto_tiro = cena_tiro.instance()
 		
-		#Essa parte deveria fazer o tiro ir para ambos os lados, mas não reconhece a função de inverter da cena tiro
+		#Essa parte inverte o tiro, mas conflita com a colisão do tiro com outros corpos
 		if posicao == "direita":
-			objeto_tiro.setar_direcao(1)
+			objeto_tiro.get_node("Area2D").setar_direcao(1)
 		else:
-			objeto_tiro.setar_direcao(-1)
+			objeto_tiro.get_node("Area2D").setar_direcao(-1)
 		
 		objeto_tiro.global_position = $Position2D.global_position
 		get_tree().root.add_child(objeto_tiro)

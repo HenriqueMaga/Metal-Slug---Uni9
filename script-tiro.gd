@@ -17,5 +17,6 @@ func _process(delta):
 	translate(mov)
 
 func colisao(area):
-	if(area.name == "Inimigo"):
+	if area.name == "Inimigo":
+		area.morrer()
 		queue_free()
