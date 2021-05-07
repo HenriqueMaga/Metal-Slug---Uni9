@@ -1,6 +1,9 @@
 extends Area2D
 
-const cena_tiro = preload("res://cena-tiro.tscn")
+const cena_tiro = preload("res://cena-tiro-inimigo.tscn")
+const gravidade = 800
+
+var velocidadeY = 0
 var velocidade = -2
 var posicao = 1
 var morto = false
@@ -11,6 +14,7 @@ func _process(delta):
 	if posicao == -1:
 		velocidade *= posicao
 	if morto == false:
+		#velocidadeY += gravidade * delta
 		translate(Vector2(velocidade,0))
 
 
@@ -22,15 +26,18 @@ func morrer():
 	velocidade = 0
 	$CollisionShape2D.set_deferred("disabled",true)
 	$AnimationPlayer.play("Morrendo")
-
+	queue_free()
 func colisao(body):
-	morrer()
+	if body.name != "StaticBody2D":
+		print("Inimigo Morrendo")
+		morrer()
+	else:
+		print("Inimigo no chão")
 
 
 func finalizar_acao(anim_name):
 	if anim_name == "Morrendo":
 		morto = true
-		queue_free()
 		
 	else:
 		var objeto_tiro = cena_tiro.instance()

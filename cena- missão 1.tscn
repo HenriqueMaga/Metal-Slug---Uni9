@@ -5,7 +5,7 @@
 [ext_resource path="res://script-missao 1.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 645.027, 36.9518 )
+extents = Vector2( 1117.05, 35.7424 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 202.834, 10.1288 )
@@ -36,6 +36,8 @@ position = Vector2( 95.481, -7.00006 )
 position = Vector2( 611.649, 564.273 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="chao-principal/StaticBody2D"]
+position = Vector2( -0.707092, -1.76782 )
+rotation = 2.56596e-05
 shape = SubResource( 1 )
 
 [node name="Tempo_Inimigo" type="Timer" parent="."]
@@ -69,15 +71,15 @@ position = Vector2( -392.445, -254.205 )
 shape = SubResource( 4 )
 
 [node name="direitaC" type="Position2D" parent="."]
-position = Vector2( 1036.27, 263.398 )
+position = Vector2( 1035.21, 269.055 )
 
 [node name="direitaB" type="Position2D" parent="."]
-position = Vector2( 1065.97, 487.905 )
+position = Vector2( 1065.26, 493.915 )
 
 [node name="esquerdaC" type="Position2D" parent="."]
-position = Vector2( -15.2029, 258.448 )
+position = Vector2( -16.2636, 264.105 )
 
 [node name="esquerdaB" type="Position2D" parent="."]
-position = Vector2( -22.2739, 491.794 )
+position = Vector2( -22.6274, 498.512 )
 
 [connection signal="timeout" from="Tempo_Inimigo" to="." method="cria_inimigo"]
