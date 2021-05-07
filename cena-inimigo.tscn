@@ -84,5 +84,6 @@ position = Vector2( -17, -12.625 )
 autostart = true
 
 [connection signal="body_entered" from="Inimigo" to="Inimigo" method="colisao"]
+[connection signal="animation_changed" from="Inimigo/AnimationPlayer" to="Inimigo" method="garante_que_morreu"]
 [connection signal="animation_finished" from="Inimigo/AnimationPlayer" to="Inimigo" method="finalizar_acao"]
 [connection signal="timeout" from="Timer" to="Inimigo" method="atirar"]

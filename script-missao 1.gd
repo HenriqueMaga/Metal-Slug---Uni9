@@ -24,6 +24,6 @@ func cria_inimigo():
 		objeto_inimigo.global_position = $direitaC.global_position
 	
 	get_tree().root.add_child(objeto_inimigo)
-	print("Nascendo",direcao)
+	print("Nascendo")
 #func _process(delta):
 #	pass

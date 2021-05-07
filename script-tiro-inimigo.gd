@@ -1,7 +1,7 @@
 extends Area2D
 
 var direcao = 1
-var velocidade = 600
+var velocidade = 400
 var mov = Vector2(0,0)
 
 func _ready():

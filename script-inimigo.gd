@@ -12,9 +12,9 @@ func _ready():
 	pass # Replace with function body.
 func _process(delta):
 	if posicao == -1:
-		velocidade *= posicao
+		velocidade *= (posicao * delta)
 	if morto == false:
-		#velocidadeY += gravidade * delta
+		velocidadeY += (gravidade * delta)
 		translate(Vector2(velocidade,0))
 
 
@@ -29,17 +29,18 @@ func morrer():
 	queue_free()
 func colisao(body):
 	if body.name != "StaticBody2D":
-		print("Inimigo Morrendo")
+		#print("Inimigo Morrendo")
 		morrer()
-	else:
-		print("Inimigo no chão")
+	#else:
+		#print("Inimigo no chão")
 
 
 func finalizar_acao(anim_name):
 	if anim_name == "Morrendo":
+		print("Ouvi a animação de morte")
 		morto = true
 		
-	else:
+	else: 
 		var objeto_tiro = cena_tiro.instance()
 		if posicao == 1:
 			objeto_tiro.get_node("Area2D").setar_direcao(1)
@@ -58,3 +59,9 @@ func atirar():
 		if chanceDeTiro < 1:
 			velocidade = 0
 			$AnimationPlayer.play("Atirando")
+
+
+func garante_que_morreu(old_name, new_name):
+	if old_name == "Morrendo":
+		print("Entrei em outra cena depois de morrer")
+		queue_free()
