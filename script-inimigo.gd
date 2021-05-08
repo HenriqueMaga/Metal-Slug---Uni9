@@ -28,7 +28,16 @@ func morrer():
 	$AnimationPlayer.play("Morrendo")
 	
 func colisao(body):
+	#Inimigos morrem por colisão
 	if body.name != "StaticBody2D":
+		morto = true
+		morrer()
+	#else:
+		#print("Inimigo no chão")
+		
+func colisao_com_tiro(area):
+	#inimigos ficavam imortais porque o tiro é um area, esse método garante que eles morrem por tiro
+	if area.name == "Tiro-Aliado":
 		morto = true
 		morrer()
 	#else:
@@ -36,6 +45,7 @@ func colisao(body):
 
 
 func finalizar_acao(anim_name):
+	#Quando terminar animação de tiro, atira de fato e volta a andar
 	if anim_name == "Atirando":
 		var objeto_tiro = cena_tiro.instance()
 		if posicao == 1:
@@ -48,11 +58,13 @@ func finalizar_acao(anim_name):
 		#Voltar a Andar
 		velocidade = -2
 		$AnimationPlayer.play("Andando")
+	#Quando terminar a animação de morte, morre hehe
 	else:
 		queue_free()
 
 func atirar():
 	if morto == false:
+		#Não atira morto porque né ¯\_(ツ)_/¯
 		var chanceDeTiro = rand_range(0,4)
 		if chanceDeTiro < 1:
 			velocidade = 0
@@ -64,11 +76,3 @@ func garante_que_morreu(old_name, new_name):
 	if old_name == "Morrendo":
 		print("Entrei em outra cena depois de morrer")
 		queue_free()
-
-
-func colisao_com_tiro(area):
-	if area.name == "Tiro-Aliado":
-		morto = true
-		morrer()
-	#else:
-		#print("Inimigo no chão")

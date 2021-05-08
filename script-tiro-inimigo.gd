@@ -6,6 +6,7 @@ var mov = Vector2(0,0)
 
 func _ready():
 	pass
+#Cena tiro inimigo foi criada para evitar Friendly Fire entre os inimigos
 
 func setar_direcao(novaDirecao):
 	direcao = novaDirecao
