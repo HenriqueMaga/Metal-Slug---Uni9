@@ -7,7 +7,8 @@ func _ready():
 
 func cria_inimigo():
 	var direcao = rand_range(0,4)
-	var objeto_inimigo = preload("res://cena-inimigo.tscn").instance()
+	var cena_inimigo = preload("res://cena-inimigo.tscn")
+	var objeto_inimigo = cena_inimigo.instance()
 	
 	if direcao < 1:
 		objeto_inimigo.global_position = $esquerdaB.global_position
@@ -24,6 +25,6 @@ func cria_inimigo():
 		objeto_inimigo.global_position = $direitaC.global_position
 	
 	get_tree().root.add_child(objeto_inimigo)
-	print("Nascendo")
+	#print("Nascendo")
 #func _process(delta):
 #	pass

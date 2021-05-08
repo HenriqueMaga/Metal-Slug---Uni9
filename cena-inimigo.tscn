@@ -83,6 +83,7 @@ position = Vector2( -17, -12.625 )
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
+[connection signal="area_entered" from="Inimigo" to="Inimigo" method="colisao_com_tiro"]
 [connection signal="body_entered" from="Inimigo" to="Inimigo" method="colisao"]
 [connection signal="animation_changed" from="Inimigo/AnimationPlayer" to="Inimigo" method="garante_que_morreu"]
 [connection signal="animation_finished" from="Inimigo/AnimationPlayer" to="Inimigo" method="finalizar_acao"]

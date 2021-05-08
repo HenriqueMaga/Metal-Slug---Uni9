@@ -65,9 +65,9 @@ func _physics_process(delta):
 		
 		#Essa parte inverte o tiro, mas conflita com a colisão do tiro com outros corpos
 		if posicao == "direita":
-			objeto_tiro.get_node("Area2D").setar_direcao(1)
+			objeto_tiro.get_node("Tiro-Aliado").setar_direcao(1)
 		else:
-			objeto_tiro.get_node("Area2D").setar_direcao(-1)
+			objeto_tiro.get_node("Tiro-Aliado").setar_direcao(-1)
 		
 		objeto_tiro.global_position = $Position2D.global_position
 		get_tree().root.add_child(objeto_tiro)
