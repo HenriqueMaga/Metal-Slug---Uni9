@@ -4,7 +4,7 @@
 [ext_resource path="res://script-inimigo.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 16.55, 25.65 )
+extents = Vector2( 24, 30.075 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "Andando"
@@ -66,7 +66,7 @@ script = ExtResource( 2 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="Inimigo"]
-scale = Vector2( 1.425, 1.425 )
+scale = Vector2( 1.61579, 1.63553 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 678, 57, 38, 38 )

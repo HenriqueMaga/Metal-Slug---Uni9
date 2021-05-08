@@ -14,7 +14,7 @@ extents = Vector2( 202.834, 10.1288 )
 extents = Vector2( 97.6871, 15.9273 )
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 251.13, 16.2102 )
+extents = Vector2( 251.13, 13.683 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 3 )
@@ -28,7 +28,7 @@ __meta__ = {
 }
 
 [node name="Marco" parent="." instance=ExtResource( 2 )]
-position = Vector2( 95.481, -7.00006 )
+position = Vector2( 95.481, -14.0711 )
 
 [node name="chao-principal" type="Node2D" parent="."]
 
@@ -39,9 +39,6 @@ position = Vector2( 611.649, 564.273 )
 position = Vector2( -0.707092, -1.76782 )
 rotation = 2.56596e-05
 shape = SubResource( 1 )
-
-[node name="Tempo_Inimigo" type="Timer" parent="."]
-autostart = true
 
 [node name="chao-direita" type="Node2D" parent="."]
 
@@ -67,19 +64,32 @@ shape = SubResource( 3 )
 position = Vector2( 611.649, 564.273 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="chao-esquerda/StaticBody2D"]
-position = Vector2( -392.445, -254.205 )
+position = Vector2( -393.152, -252.084 )
 shape = SubResource( 4 )
 
 [node name="direitaC" type="Position2D" parent="."]
-position = Vector2( 1035.21, 269.055 )
+position = Vector2( 1035.21, 267 )
 
 [node name="direitaB" type="Position2D" parent="."]
-position = Vector2( 1065.26, 493.915 )
+position = Vector2( 1065.26, 501 )
 
 [node name="esquerdaC" type="Position2D" parent="."]
-position = Vector2( -16.2636, 264.105 )
+position = Vector2( -16.617, 267 )
 
 [node name="esquerdaB" type="Position2D" parent="."]
-position = Vector2( -22.6274, 498.512 )
+position = Vector2( -22.981, 501 )
+
+[node name="Tempo_Inimigo" type="Timer" parent="."]
+autostart = true
+
+[node name="Tempo_Alien" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="Aumenta dificuldade" type="Timer" parent="."]
+wait_time = 40.0
+autostart = true
 
 [connection signal="timeout" from="Tempo_Inimigo" to="." method="cria_inimigo"]
+[connection signal="timeout" from="Tempo_Alien" to="." method="cria_alien"]
+[connection signal="timeout" from="Aumenta dificuldade" to="." method="aumenta_dificuldade"]

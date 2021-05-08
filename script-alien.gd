@@ -1,8 +1,10 @@
 extends Area2D
 
 const cena_tiro = preload("res://cena-tiro-inimigo.tscn")
-const gravidade = 50
+const gravidade = 800
 
+var descerAte
+var chegou = false
 var velocidadeY = 0
 var velocidade = -2
 var posicao = 1
@@ -11,16 +13,31 @@ var morto = false
 func _ready():
 	morto = false
 func _process(delta):
-	if posicao == -1:
-		velocidade *= (posicao * delta)
-	if morto == false:
-		velocidadeY += (gravidade * delta)
-		translate(Vector2(velocidade,0))
-	#ajustar_posicao()
+	#Alien irá descer coma animação inicial até a posição do parametro
+	if descerAte != null && chegou == false && morto == false:
+		translate(Vector2(0,2))
+	
+	#Quando chegar, ele passará a andar e atirar normalmente
+	if global_position.y == descerAte && morto == false && chegou == false:
+		chegou = true
+		$AnimationPlayer.play("Andando")
+		$"raio-trator".visible = false
+		
+	if chegou == true:
+		if posicao == -1:
+			velocidade *= (posicao * delta)
+		if morto == false:
+			velocidadeY += (gravidade * delta)
+			translate(Vector2(velocidade,0))
+	
 
 func setar_direcao(direcao):
 	velocidade *= direcao
 	scale.x *= -1
+	
+func setar_posicao_do_alien(x):
+	#recebe até onde o Alien descerá no raio trator
+	descerAte = x
 	
 func morrer():
 	velocidade = 0
@@ -54,7 +71,6 @@ func finalizar_acao(anim_name):
 			objeto_tiro.get_node("Area2D").setar_direcao(-1)
 		objeto_tiro.global_position = $Position2D.global_position
 		get_tree().root.add_child(objeto_tiro)
-		
 		#Voltar a Andar
 		velocidade = -2
 		$AnimationPlayer.play("Andando")
@@ -63,8 +79,8 @@ func finalizar_acao(anim_name):
 		queue_free()
 
 func atirar():
-	if morto == false:
-		#Não atira morto porque né ¯\_(ツ)_/¯
+	if morto == false && chegou == true:
+		#Não atira morto porque né ¯\_(ツ)_/¯ (incluí para não atirar no raio trator)
 		var chanceDeTiro = rand_range(0,4)
 		if chanceDeTiro < 1:
 			velocidade = 0
@@ -76,8 +92,3 @@ func garante_que_morreu(old_name, new_name):
 	if old_name == "Morrendo":
 		print("Entrei em outra cena depois de morrer")
 		queue_free()
-
-#Tentativa de impedir que inimigos voem pelo vão
-func ajustar_posicao():
-	if global_position.y < 300 && global_position.x > 450 && global_position.x < 650:
-		print("Area 51")

@@ -4,7 +4,7 @@
 [ext_resource path="res://imagens/png jogo.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 15.1255, 28.1349 )
+extents = Vector2( 24.5689, 31.117 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "Agaixar"
@@ -100,7 +100,7 @@ region_enabled = true
 region_rect = Rect2( 1445, 500, 260, 272 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
-position = Vector2( 0.351723, -0.352966 )
+position = Vector2( -4.57254, 1.76471 )
 shape = SubResource( 1 )
 one_way_collision = true
 

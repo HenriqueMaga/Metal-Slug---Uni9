@@ -11,7 +11,7 @@ var posicao = "direita"
 var noChao = true
 
 func _physics_process(delta):
-	
+	ajustar_posicao()
 	var esquerda = Input.is_action_pressed("ui_left")
 	var direita = Input.is_action_pressed("ui_right")
 	var cima = Input.is_action_pressed("ui_up")
@@ -81,3 +81,15 @@ func _physics_process(delta):
 		print("levantando")
 		scale.y = 1.002
 		
+func ajustar_posicao():
+	if (global_position.x < 60):
+		global_position.x = 60
+	if (global_position.x > get_viewport().size.x-60):
+		global_position.x = get_viewport().size.x-60
+
+
+
+	if (global_position.y < 60):
+		global_position.y = 60
+	if (global_position.y > get_viewport().size.y-60):
+		global_position.y = get_viewport().size.y-60
