@@ -1,6 +1,6 @@
 extends Node
 
-var qtd_vidas = 10
+var qtd_vidas = 50
 var qtd_pontos = 0
 var valor_ponto_inimigo = 10
 var valor_ponto_alien = 15
