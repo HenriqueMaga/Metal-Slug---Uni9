@@ -1,11 +1,11 @@
 extends Area2D
 
 const cena_tiro = preload("res://cena-tiro-inimigo.tscn")
-const gravidade = 50
 
-var velocidadeY = 0
+var velocidadePadrao
 var velocidade = -2
 var posicao = 1
+var direcaoTiro = 1
 var morto = false
 
 func _ready():
@@ -14,13 +14,14 @@ func _process(delta):
 	if posicao == -1:
 		velocidade *= (posicao * delta)
 	if morto == false:
-		velocidadeY += (gravidade * delta)
 		translate(Vector2(velocidade,0))
-	#ajustar_posicao()
+	ajustar_posicao()
 
 func setar_direcao(direcao):
 	velocidade *= direcao
-	scale.x *= -1
+	velocidadePadrao = velocidade
+	direcaoTiro *= -direcao
+	scale.x *= direcao
 	
 func morrer():
 	velocidade = 0
@@ -48,15 +49,14 @@ func finalizar_acao(anim_name):
 	#Quando terminar animação de tiro, atira de fato e volta a andar
 	if anim_name == "Atirando":
 		var objeto_tiro = cena_tiro.instance()
-		if posicao == 1:
-			objeto_tiro.get_node("Area2D").setar_direcao(1)
-		else:
-			objeto_tiro.get_node("Area2D").setar_direcao(-1)
+		#print("minha posição é ",posicao, " irei atirar para ",direcaoTiro)
+		objeto_tiro.get_node("Area2D").setar_direcao(direcaoTiro)
+		
 		objeto_tiro.global_position = $Position2D.global_position
 		get_tree().root.add_child(objeto_tiro)
 		
 		#Voltar a Andar
-		velocidade = -2
+		velocidade = velocidadePadrao
 		$AnimationPlayer.play("Andando")
 	#Quando terminar a animação de morte, morre hehe
 	else:
@@ -80,4 +80,9 @@ func garante_que_morreu(old_name, new_name):
 #Tentativa de impedir que inimigos voem pelo vão
 func ajustar_posicao():
 	if global_position.y < 300 && global_position.x > 450 && global_position.x < 650:
-		print("Area 51")
+		setar_direcao(-1)
+	
+	if (global_position.x < -26):
+		setar_direcao(-1)
+	if (global_position.x > get_viewport().size.x +40):
+		setar_direcao(-1)

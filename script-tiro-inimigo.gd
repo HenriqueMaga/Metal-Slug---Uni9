@@ -1,6 +1,6 @@
 extends Area2D
 
-var direcao = 1
+var direcao
 var velocidade = 400
 var mov = Vector2(0,0)
 

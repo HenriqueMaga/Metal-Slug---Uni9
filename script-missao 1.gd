@@ -25,11 +25,13 @@ func cria_inimigo():
 	elif direcao < 3:
 		var objeto_inimigo = cena_inimigo.instance()
 		objeto_inimigo.global_position = $direitaB.global_position
+		objeto_inimigo.get_node("Inimigo").setar_direcao(1)
 		get_tree().root.add_child(objeto_inimigo)
 		
 	elif direcao < 4:
 		var objeto_inimigo = cena_inimigo.instance()
 		objeto_inimigo.global_position = $direitaC.global_position
+		objeto_inimigo.get_node("Inimigo").setar_direcao(1)
 		get_tree().root.add_child(objeto_inimigo)
 	
 	#print("Nascendo")

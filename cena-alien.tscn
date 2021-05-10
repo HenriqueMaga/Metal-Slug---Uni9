@@ -93,7 +93,7 @@ shape = SubResource( 1 )
 scale = Vector2( 1.32552, 1.37202 )
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 168, 157, 29, 27 )
+region_rect = Rect2( 344, 157, 29, 27 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Alien"]
 autoplay = "Descendo"
