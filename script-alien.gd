@@ -1,14 +1,15 @@
 extends Area2D
 
 const cena_tiro = preload("res://cena-tiro-inimigo.tscn")
-const gravidade = 800
+
+var velocidadePadrao
+var velocidade = -2
+var posicao = 1
+var direcaoTiro = -1
+var morto = false
 
 var descerAte
 var chegou = false
-var velocidadeY = 0
-var velocidade = -2
-var posicao = 1
-var morto = false
 
 func _ready():
 	morto = false
@@ -27,8 +28,8 @@ func _process(delta):
 		if posicao == -1:
 			velocidade *= (posicao * delta)
 		if morto == false:
-			velocidadeY += (gravidade * delta)
 			translate(Vector2(velocidade,0))
+	ajustar_posicao()
 	
 
 func setar_direcao(direcao):
@@ -92,3 +93,13 @@ func garante_que_morreu(old_name, new_name):
 	if old_name == "Morrendo":
 		print("Entrei em outra cena depois de morrer")
 		queue_free()
+
+#Tentativa de impedir que inimigos voem pelo vão
+func ajustar_posicao():
+	if global_position.y < 300 && global_position.x > 450 && global_position.x < 650:
+		setar_direcao(-1)
+	
+	if (global_position.x < -26):
+		setar_direcao(-1)
+	if (global_position.x > get_viewport().size.x +40):
+		setar_direcao(-1)

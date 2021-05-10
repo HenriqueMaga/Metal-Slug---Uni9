@@ -52,6 +52,7 @@ func cria_alien():
 	elif direcao < 2:
 		objeto_alien.global_position.y = -20
 		objeto_alien.global_position.x = rand_range(650,1000)
+		objeto_alien.get_node("Alien").setar_direcao(1)
 		objeto_alien.get_node("Alien").setar_posicao_do_alien(266)
 	
 	elif direcao < 3:
@@ -63,6 +64,7 @@ func cria_alien():
 	elif direcao < 4:
 		objeto_alien.global_position.y = -20
 		objeto_alien.global_position.x = rand_range(550,1000)
+		objeto_alien.get_node("Alien").setar_direcao(1)
 		objeto_alien.get_node("Alien").setar_posicao_do_alien(500)
 	get_tree().root.add_child(objeto_alien)
 

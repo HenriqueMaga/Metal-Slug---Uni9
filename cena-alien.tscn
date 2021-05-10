@@ -42,7 +42,7 @@ tracks/0/keys = {
 "values": [ Rect2( 1, 246, 49, 43 ), Rect2( 63, 246, 49, 43 ), Rect2( 124, 246, 47, 43 ), Rect2( 182, 246, 47, 43 ), Rect2( 241, 246, 46, 43 ), Rect2( 302, 246, 46, 43 ), Rect2( 356, 246, 45, 43 ), Rect2( 412, 246, 44, 43 ), Rect2( 460, 246, 53, 43 ), Rect2( 519, 250, 54, 39 ), Rect2( 579, 251, 54, 38 ), Rect2( 640, 251, 69, 38 ), Rect2( 716, 252, 70, 37 ), Rect2( 800, 253, 67, 36 ), Rect2( 895, 254, 55, 35 ), Rect2( 957, 253, 52, 36 ), Rect2( 1014, 252, 53, 37 ), Rect2( 1073, 247, 53, 42 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "Descendo"
 length = 0.64
 loop = true
@@ -60,8 +60,7 @@ tracks/0/keys = {
 "values": [ Rect2( 10, 157, 28, 27 ), Rect2( 43, 157, 29, 27 ), Rect2( 79, 157, 28, 27 ), Rect2( 124, 157, 30, 27 ), Rect2( 168, 157, 29, 27 ), Rect2( 208, 157, 30, 27 ), Rect2( 243, 157, 28, 27 ), Rect2( 276, 157, 29, 27 ), Rect2( 311, 157, 28, 27 ), Rect2( 344, 157, 29, 27 ), Rect2( 379, 157, 28, 27 ), Rect2( 412, 157, 29, 27 ), Rect2( 447, 157, 28, 27 ), Rect2( 480, 157, 29, 27 ), Rect2( 515, 157, 28, 27 ), Rect2( 548, 157, 29, 27 ) ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "Morrendo"
+[sub_resource type="Animation" id=5]
 length = 2.0
 step = 0.05
 tracks/0/type = "value"
@@ -99,8 +98,8 @@ region_rect = Rect2( 344, 157, 29, 27 )
 autoplay = "Descendo"
 anims/Andando = SubResource( 2 )
 anims/Atirando = SubResource( 3 )
-anims/Descendo = SubResource( 5 )
-anims/Morrendo = SubResource( 4 )
+anims/Descendo = SubResource( 4 )
+anims/Morrendo = SubResource( 5 )
 
 [node name="Position2D" type="Position2D" parent="Alien"]
 position = Vector2( -23.75, -0.875 )
