@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Metal Slug - Uni9"
-run/main_scene="res://cena- missão 1.tscn"
+run/main_scene="res://cena-inicio.tscn"
 config/icon="res://icon.png"
 
 [autoload]
