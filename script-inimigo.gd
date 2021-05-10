@@ -5,14 +5,12 @@ const cena_tiro = preload("res://cena-tiro-inimigo.tscn")
 var velocidadePadrao
 var velocidade = -2
 var posicao = 1
-var direcaoTiro = 1
+var direcaoTiro = -1
 var morto = false
 
 func _ready():
 	morto = false
 func _process(delta):
-	if posicao == -1:
-		velocidade *= (posicao * delta)
 	if morto == false:
 		translate(Vector2(velocidade,0))
 	ajustar_posicao()
@@ -20,7 +18,7 @@ func _process(delta):
 func setar_direcao(direcao):
 	velocidade *= direcao
 	velocidadePadrao = velocidade
-	direcaoTiro *= -direcao
+	direcaoTiro *= direcao
 	scale.x *= direcao
 	
 func morrer():
@@ -49,7 +47,6 @@ func finalizar_acao(anim_name):
 	#Quando terminar animação de tiro, atira de fato e volta a andar
 	if anim_name == "Atirando":
 		var objeto_tiro = cena_tiro.instance()
-		#print("minha posição é ",posicao, " irei atirar para ",direcaoTiro)
 		objeto_tiro.get_node("Area2D").setar_direcao(direcaoTiro)
 		
 		objeto_tiro.global_position = $Position2D.global_position
