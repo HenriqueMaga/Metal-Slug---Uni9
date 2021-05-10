@@ -52,6 +52,8 @@ func colisao(body):
 	if body.name != "StaticBody2D":
 		morto = true
 		morrer()
+		ScriptGlobal.qtd_pontos += ScriptGlobal.valor_ponto_alien
+		ScriptGlobal.qtd_inimigos_derrotados += 1
 	#else:
 		#print("Inimigo no chão")
 		
@@ -60,6 +62,8 @@ func colisao_com_tiro(area):
 	if area.name == "Tiro-Aliado":
 		morto = true
 		morrer()
+		ScriptGlobal.qtd_pontos += ScriptGlobal.valor_ponto_alien
+		ScriptGlobal.qtd_inimigos_derrotados += 1
 	#else:
 		#print("Inimigo no chão")
 

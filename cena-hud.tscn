@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://fontes/fipps/Fipps-Regular.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://imagens/coin.png" type="Texture" id=2]
+[ext_resource path="res://script-hud.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 1 )
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="pontos" type="RichTextLabel" parent="."]
+margin_left = 65.5
+margin_top = 10.0
+margin_right = 183.5
+margin_bottom = 63.0
+custom_fonts/normal_font = SubResource( 1 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_colors/selection_color = Color( 0.898039, 0.847059, 0.0784314, 1 )
+custom_colors/font_color_selected = Color( 0.898039, 0.847059, 0.0784314, 1 )
+tab_size = 5
+text = "00000"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="coin" type="Sprite" parent="."]
+position = Vector2( 33.5, 27.2001 )
+scale = Vector2( 0.0449219, 0.0566406 )
+texture = ExtResource( 2 )
+
+[node name="tempo" type="RichTextLabel" parent="."]
+margin_left = 475.0
+margin_top = 1.0
+margin_right = 519.0
+margin_bottom = 42.0
+rect_scale = Vector2( 2, 2 )
+custom_fonts/normal_font = SubResource( 2 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+text = "00"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="subir_tempo"]

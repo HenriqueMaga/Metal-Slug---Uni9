@@ -19,4 +19,5 @@ func _process(delta):
 
 func colisao(area):
 	if area.name == "KinematicBody2D":
-		print("Sofri dano")
+		ScriptGlobal.qtd_vidas += -2
+		print("Sofri dano ",ScriptGlobal.qtd_vidas)

@@ -14,6 +14,10 @@ config/name="Metal Slug - Uni9"
 run/main_scene="res://cena- missão 1.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+ScriptGlobal="*res://script-global.gd"
+
 [input]
 
 tiro={
