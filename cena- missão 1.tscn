@@ -80,8 +80,10 @@ position = Vector2( -16.617, 267 )
 position = Vector2( -22.981, 501 )
 
 [node name="Tempo_Inimigo" type="Timer" parent="."]
+autostart = true
 
 [node name="Tempo_Alien" type="Timer" parent="."]
+wait_time = 4.0
 autostart = true
 
 [node name="Aumenta dificuldade" type="Timer" parent="."]
