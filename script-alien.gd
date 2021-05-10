@@ -34,11 +34,13 @@ func _process(delta):
 
 func setar_direcao(direcao):
 	velocidade *= direcao
-	scale.x *= -1
+	velocidadePadrao = velocidade
+	direcaoTiro *= direcao
+	scale.x *= direcao
 	
-func setar_posicao_do_alien(x):
+func setar_posicao_do_alien(y):
 	#recebe até onde o Alien descerá no raio trator
-	descerAte = x
+	descerAte = y
 	
 func morrer():
 	velocidade = 0
@@ -66,14 +68,13 @@ func finalizar_acao(anim_name):
 	#Quando terminar animação de tiro, atira de fato e volta a andar
 	if anim_name == "Atirando":
 		var objeto_tiro = cena_tiro.instance()
-		if posicao == 1:
-			objeto_tiro.get_node("Area2D").setar_direcao(1)
-		else:
-			objeto_tiro.get_node("Area2D").setar_direcao(-1)
+		objeto_tiro.get_node("Area2D").setar_direcao(direcaoTiro)
+		
 		objeto_tiro.global_position = $Position2D.global_position
 		get_tree().root.add_child(objeto_tiro)
+		
 		#Voltar a Andar
-		velocidade = -2
+		velocidade = velocidadePadrao
 		$AnimationPlayer.play("Andando")
 	#Quando terminar a animação de morte, morre hehe
 	else:
