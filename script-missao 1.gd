@@ -3,8 +3,7 @@ extends Node2D
 
 func _ready():
 	pass # Replace with function body.
-
-
+	
 func cria_inimigo():
 	var direcao = rand_range(0,4)
 	var cena_inimigo = preload("res://cena-inimigo.tscn")
@@ -74,3 +73,7 @@ func aumenta_dificuldade():
 	$Tempo_Alien.wait_time *= 0.5
 	print("novo tempo de dificuldade soldado = ",$Tempo_Inimigo.wait_time )
 	print("novo tempo de dificuldade Alien = ",$Tempo_Alien.wait_time )
+
+
+func repetir():
+	$AudioStreamPlayer.play()

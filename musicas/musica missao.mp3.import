@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/musica missao.mp3-b41b0fe464f49c340a16037e7e260073.mp3str"
+
+[deps]
+
+source_file="res://musicas/musica missao.mp3"
+dest_files=[ "res://.import/musica missao.mp3-b41b0fe464f49c340a16037e7e260073.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

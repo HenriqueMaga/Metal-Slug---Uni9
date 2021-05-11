@@ -46,6 +46,7 @@ func morrer():
 	velocidade = 0
 	$CollisionShape2D.set_deferred("disabled",true)
 	$AnimationPlayer.play("Morrendo")
+	$AudioStreamPlayer.play()
 	
 func colisao(body):
 	#Inimigos morrem por colisão

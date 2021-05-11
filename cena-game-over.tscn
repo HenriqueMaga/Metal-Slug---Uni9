@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://imagens/game over.jpeg" type="Texture" id=1]
 [ext_resource path="res://fontes/fipps/Fipps-Regular.otf" type="DynamicFontData" id=2]
 [ext_resource path="res://script-game-over.gd" type="Script" id=3]
+[ext_resource path="res://musicas/Metal Slug - Ending Theme.mp3" type="AudioStream" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 2 )
@@ -112,3 +113,7 @@ text = "________________________________________________________________________
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+autoplay = true

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/alien morrendo.mp3-0408f9fa117c60375a8b86b8848c4823.mp3str"
+
+[deps]
+
+source_file="res://musicas/alien morrendo.mp3"
+dest_files=[ "res://.import/alien morrendo.mp3-0408f9fa117c60375a8b86b8848c4823.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
