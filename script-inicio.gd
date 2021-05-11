@@ -45,14 +45,26 @@ func ativar_musica(button_pressed):
 	if button_pressed == true:
 		ScriptGlobal.status_musica = true
 		$AudioStreamPlayer.play()
+		if ScriptGlobal.status_sons:
+			$Ok.play()
 	else:
 		ScriptGlobal.status_musica = false
 		$AudioStreamPlayer.stop()
 		$AudioStreamPlayer.autoplay = false
+		if ScriptGlobal.status_sons:
+			$Ok.play()
 
 
 func ativar_sons(button_pressed):
 	if button_pressed == true:
 		ScriptGlobal.status_sons = true
+		if ScriptGlobal.status_sons:
+			$Ok.play()
 	else:
 		ScriptGlobal.status_sons = false
+		if ScriptGlobal.status_sons:
+			$Ok.play()
+
+
+func apenas_um_ok():
+	$Ok.stop()
