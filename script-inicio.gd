@@ -17,10 +17,42 @@ func _process(delta):
 	
 	if enter:
 		print("Apertei")
-		get_tree().change_scene("res://cena-missão-1.tscn")
+		$ColorRect.visible = true
+		$Timer.one_shot = true
+		$"Label username".visible = true
+		$"Label senha".visible = true
+		$username.visible = true
+		$senha.visible = true
+		$Button.visible = true
+		$musica.visible = true
+		$"ativar-musica".visible = true
+		$sons.visible = true
+		$"ativar-sons".visible = true
+	#get_tree().change_scene("res://cena-missão-1.tscn")
 
 func piscar():
 	if $RichTextLabel.visible == true:
 		$RichTextLabel.visible = false
 	else:
 		$RichTextLabel.visible = true
+
+
+func iniciar_jogo():
+	get_tree().change_scene("res://cena-missão-1.tscn")
+
+
+func ativar_musica(button_pressed):
+	if button_pressed == true:
+		ScriptGlobal.status_musica = true
+		$AudioStreamPlayer.play()
+	else:
+		ScriptGlobal.status_musica = false
+		$AudioStreamPlayer.stop()
+		$AudioStreamPlayer.autoplay = false
+
+
+func ativar_sons(button_pressed):
+	if button_pressed == true:
+		ScriptGlobal.status_sons = true
+	else:
+		ScriptGlobal.status_sons = false

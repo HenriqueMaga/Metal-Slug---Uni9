@@ -2,7 +2,13 @@ extends Node2D
 
 
 func _ready():
-	pass # Replace with function body.
+	if ScriptGlobal.status_musica == false:
+		$AudioStreamPlayer.autoplay = false
+		$AudioStreamPlayer.stop()
+	else:
+		$AudioStreamPlayer.autoplay = true
+		$AudioStreamPlayer.play()
+		
 	
 func cria_inimigo():
 	var direcao = rand_range(0,4)
@@ -76,4 +82,5 @@ func aumenta_dificuldade():
 
 
 func repetir():
-	$AudioStreamPlayer.play()
+	if ScriptGlobal.status_musica == true:
+		$AudioStreamPlayer.play()

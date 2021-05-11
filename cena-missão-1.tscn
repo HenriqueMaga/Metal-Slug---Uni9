@@ -96,7 +96,6 @@ autostart = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
-autoplay = true
 
 [connection signal="timeout" from="Tempo_Inimigo" to="." method="cria_inimigo"]
 [connection signal="timeout" from="Tempo_Alien" to="." method="cria_alien"]

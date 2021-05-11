@@ -12,7 +12,13 @@ func _ready():
 	$tempo.text = str(ScriptGlobal.tempo_decorrido)
 	$pontos.text = str(ScriptGlobal.qtd_pontos)
 	$total.text = str(ScriptGlobal.qtd_pontos + ScriptGlobal.tempo_decorrido + ScriptGlobal.qtd_inimigos_derrotados)
-
+	if ScriptGlobal.status_musica == false:
+		$AudioStreamPlayer.autoplay = false
+		$AudioStreamPlayer.stop()
+	else:
+		$AudioStreamPlayer.autoplay = true
+		$AudioStreamPlayer.play()
+		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
