@@ -14,6 +14,10 @@ func _process(delta):
 	if morto == false:
 		translate(Vector2(velocidade,0))
 	ajustar_posicao()
+	
+	#Quando o jogo tiver acabado, limpa tudo para não ficar tiros aparecendo
+	if ScriptGlobal.fim_de_jogo == true:
+		queue_free()
 
 func setar_direcao(direcao):
 	velocidade *= direcao

@@ -6,6 +6,7 @@ var valor_ponto_inimigo = 10
 var valor_ponto_alien = 15
 var qtd_inimigos_derrotados = 0
 var tempo_decorrido = 0
+var fim_de_jogo = false
 
 var personagem = 1
 var status_musica = true

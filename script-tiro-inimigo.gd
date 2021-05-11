@@ -16,6 +16,10 @@ func setar_direcao(novaDirecao):
 func _process(delta):
 	mov.x = velocidade * delta * direcao
 	translate(mov)
+	
+	#Quando o jogo tiver acabado, limpa tudo para não ficar tiros aparecendo
+	if ScriptGlobal.fim_de_jogo == true:
+		queue_free()
 
 func colisao(area):
 	if area.name == "KinematicBody2D":

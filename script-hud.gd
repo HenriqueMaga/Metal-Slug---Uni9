@@ -14,6 +14,7 @@ func atualizar_hud():
 func _process(delta):
 	atualizar_hud()
 	if (ScriptGlobal.qtd_vidas==0):
+		ScriptGlobal.fim_de_jogo = true
 		get_tree().change_scene("res://cena-game-over.tscn")
 		
 	if ScriptGlobal.qtd_vidas < 10:
