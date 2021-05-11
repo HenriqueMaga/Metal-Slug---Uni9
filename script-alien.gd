@@ -30,6 +30,9 @@ func _process(delta):
 		if morto == false:
 			translate(Vector2(velocidade,0))
 	ajustar_posicao()
+	#Quando o jogo tiver acabado, limpa tudo para não ficar tiros aparecendo
+	if ScriptGlobal.fim_de_jogo == true:
+		queue_free()
 	
 
 func setar_direcao(direcao):
@@ -58,9 +61,7 @@ func colisao(body):
 		ScriptGlobal.qtd_inimigos_derrotados += 1
 	#else:
 		#print("Inimigo no chão"
-	#Quando o jogo tiver acabado, limpa tudo para não ficar tiros aparecendo
-	if ScriptGlobal.fim_de_jogo == true:
-		queue_free()
+	
 		
 func colisao_com_tiro(area):
 	#inimigos ficavam imortais porque o tiro é um area, esse método garante que eles morrem por tiro

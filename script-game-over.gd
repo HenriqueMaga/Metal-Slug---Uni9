@@ -23,3 +23,12 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func jogar_novamente():
+	ScriptGlobal.jogar_novamente()
+	get_tree().change_scene("res://cena-missão-1.tscn")
+
+func ir_para_menu():
+	ScriptGlobal.jogar_novamente()
+	get_tree().change_scene("res://cena-inicio.tscn")

@@ -13,8 +13,16 @@ var status_musica = true
 var status_sons = true
 var nivel_dificuldade = 1 #1-facil, 2-medio, 3-dificil
 
+
+func jogar_novamente():
+	qtd_vidas = 50
+	qtd_pontos = 0
+	qtd_inimigos_derrotados = 0
+	tempo_decorrido = 0
+	fim_de_jogo = false
+	
 func redefinir_config():
-	qtd_vidas = 3
+	qtd_vidas = 50
 	qtd_pontos = 0
 	nivel_dificuldade = 1 #1-facil, 2-medio, 3-dificil
 	status_musica = true

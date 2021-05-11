@@ -64,7 +64,3 @@ func ativar_sons(button_pressed):
 		ScriptGlobal.status_sons = false
 		if ScriptGlobal.status_sons:
 			$Ok.play()
-
-
-func apenas_um_ok():
-	$Ok.stop()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://imagens/game over.jpeg" type="Texture" id=1]
 [ext_resource path="res://fontes/fipps/Fipps-Regular.otf" type="DynamicFontData" id=2]
@@ -21,6 +21,12 @@ font_data = ExtResource( 2 )
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=7]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=8]
 font_data = ExtResource( 2 )
 
 [node name="Node2D" type="Node2D"]
@@ -116,3 +122,28 @@ __meta__ = {
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
+
+[node name="jogarNovamente" type="Button" parent="."]
+margin_left = 753.0
+margin_top = 426.0
+margin_right = 993.0
+margin_bottom = 476.0
+custom_fonts/font = SubResource( 7 )
+text = "Jogar Novamente"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="menu" type="Button" parent="."]
+margin_left = 753.0
+margin_top = 496.5
+margin_right = 993.0
+margin_bottom = 546.5
+custom_fonts/font = SubResource( 8 )
+text = "Menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="button_up" from="jogarNovamente" to="." method="jogar_novamente"]
+[connection signal="button_up" from="menu" to="." method="ir_para_menu"]
