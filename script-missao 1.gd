@@ -84,3 +84,20 @@ func aumenta_dificuldade():
 func repetir():
 	if ScriptGlobal.status_musica == true:
 		$AudioStreamPlayer.play()
+
+
+func descer_laser():
+	var altura = rand_range(0,3)
+	var cena_laser_box = preload("res://cena-laser-box.tscn")
+	var objeto_laser = cena_laser_box.instance()
+	
+	if altura < 1:
+		objeto_laser.global_position.x = rand_range(50,450)
+		objeto_laser.setar_posicao_da_caixa(280)
+	elif altura < 2:
+		objeto_laser.global_position.x = rand_range(650,1000)
+		objeto_laser.setar_posicao_da_caixa(280)
+	else:
+		objeto_laser.global_position.x = rand_range(50,1000)
+		objeto_laser.setar_posicao_da_caixa(510)
+	get_tree().root.add_child(objeto_laser)

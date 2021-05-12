@@ -1,22 +1,29 @@
 extends KinematicBody2D
 
-const cena_tiro = preload("res://cena-tiro.tscn")
 const velocidade = 150
 const velPulo = 500
 const gravidade = 800
 
+var cena_tiro = preload("res://cena-tiro.tscn")
 var velocidadeY = 0
 var andar = Vector2(0, 0)
 var posicao = "direita"
 var noChao = true
+var tiro
 
 func _physics_process(delta):
+	if ScriptGlobal.laser_equipado == true:
+		cena_tiro = preload("res://cena-laser.tscn")
+		tiro = Input.is_action_pressed("tiro")
+	else:
+		cena_tiro = preload("res://cena-tiro.tscn")
+		tiro = Input.is_action_just_pressed("tiro")
+	
 	ajustar_posicao()
 	var esquerda = Input.is_action_pressed("ui_left")
 	var direita = Input.is_action_pressed("ui_right")
 	var cima = Input.is_action_pressed("ui_up")
 	var baixo = Input.is_action_pressed("ui_down")
-	var tiro = Input.is_action_just_pressed("tiro")
 	var pular = Input.is_action_just_pressed("ui_accept")
 	
 	var soltouEsquerda = Input.is_action_just_released("ui_left")
@@ -76,7 +83,7 @@ func _physics_process(delta):
 	
 	if baixo:
 		$AnimationPlayer.play("Agaixar")
-		scale.y = 0.6
+		scale.y = 0.5
 	if soltouBaixo:
 		print("levantando")
 		scale.y = 1.002

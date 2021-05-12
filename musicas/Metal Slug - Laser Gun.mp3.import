@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Metal Slug - Laser Gun.mp3-3751209fd8a1b29f2f9e0a2b3be85020.mp3str"
+
+[deps]
+
+source_file="res://musicas/Metal Slug - Laser Gun.mp3"
+dest_files=[ "res://.import/Metal Slug - Laser Gun.mp3-3751209fd8a1b29f2f9e0a2b3be85020.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

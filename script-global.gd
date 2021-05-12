@@ -13,6 +13,8 @@ var status_musica = true
 var status_sons = true
 var nivel_dificuldade = 1 #1-facil, 2-medio, 3-dificil
 
+var laser_equipado = false
+var combustivel_do_laser = 0
 
 func jogar_novamente():
 	qtd_vidas = 50
@@ -20,6 +22,8 @@ func jogar_novamente():
 	qtd_inimigos_derrotados = 0
 	tempo_decorrido = 0
 	fim_de_jogo = false
+	laser_equipado = false
+	combustivel_do_laser = 0
 	
 func redefinir_config():
 	qtd_vidas = 50

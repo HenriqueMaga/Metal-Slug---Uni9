@@ -13,7 +13,7 @@ func atualizar_hud():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	atualizar_hud()
-	if (ScriptGlobal.qtd_vidas==0):
+	if (ScriptGlobal.qtd_vidas < 1):
 		ScriptGlobal.fim_de_jogo = true
 		get_tree().change_scene("res://cena-game-over.tscn")
 		
@@ -30,6 +30,16 @@ func _process(delta):
 		
 	
 	$"vida-atual".text = str(ScriptGlobal.qtd_vidas)
+	
+	if ScriptGlobal.laser_equipado == true:
+		$laser.visible = true
+		$x.visible = true
+		$municao.visible = true
+		$municao.text = str(ScriptGlobal.combustivel_do_laser)
+	else:
+		$laser.visible = false
+		$x.visible = false
+		$municao.visible = false
 
 
 func ir_para_vitoria():

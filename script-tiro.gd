@@ -4,8 +4,8 @@ var direcao = 1
 var velocidade = 600
 var mov = Vector2(0,0)
 
-func _ready():
-	pass
+func ready():
+	$AudioStreamPlayer.play()
 
 func setar_direcao(novaDirecao):
 	direcao = novaDirecao
@@ -19,4 +19,9 @@ func _process(delta):
 func colisao(area):
 	if area.name == "Inimigo" ||  area.name == "Alien":
 		area.morrer()
-		queue_free()
+		$CollisionShape2D.set_deferred("disabled",true)
+		$Sprite.visible = false
+
+
+func apagar_tiro():
+	queue_free()
