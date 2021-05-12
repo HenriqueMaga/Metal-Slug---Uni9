@@ -4,8 +4,7 @@ var direcao = 1
 var velocidade = 600
 var mov = Vector2(0,0)
 
-func ready():
-	$AudioStreamPlayer.play()
+#func ready():
 
 func setar_direcao(novaDirecao):
 	direcao = novaDirecao

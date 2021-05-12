@@ -17,8 +17,8 @@ func setar_direcao(novaDirecao):
 		position.x = -1060
 		
 func _process(delta):
-	print(ScriptGlobal.combustivel_do_laser)
-	$AudioStreamPlayer.play()
+	if ScriptGlobal.status_sons == true:
+		$AudioStreamPlayer.play()
 	if ScriptGlobal.combustivel_do_laser % 3 == 0:
 		$Sprite.visible = false
 		$Sprite2.visible = true

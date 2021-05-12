@@ -18,7 +18,8 @@ func setar_posicao_da_caixa(y):
 
 func equipar_laser(body):
 	if body.name != "StaticBody2D":
-		$AudioStreamPlayer.play()
+		if ScriptGlobal.status_sons == true:
+			$AudioStreamPlayer.play()
 		$Area2D/CollisionShape2D.set_deferred("disabled",true)
 		$Area2D/Sprite.visible = false
 		ScriptGlobal.laser_equipado = true

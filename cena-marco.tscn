@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://script-marco.gd" type="Script" id=1]
 [ext_resource path="res://imagens/png jogo.png" type="Texture" id=2]
+[ext_resource path="res://musicas/tiro normal.mp3" type="AudioStream" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 24.5689, 31.117 )
@@ -114,3 +115,6 @@ anims/pulando = SubResource( 6 )
 
 [node name="Position2D" type="Position2D" parent="KinematicBody2D"]
 position = Vector2( 17.9383, -13.0592 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="KinematicBody2D"]
+stream = ExtResource( 3 )

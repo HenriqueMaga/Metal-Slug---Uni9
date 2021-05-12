@@ -67,6 +67,8 @@ func _physics_process(delta):
 	noChao = true
 	
 	if tiro:
+		if ScriptGlobal.status_sons == true && ScriptGlobal.laser_equipado == false:
+			$AudioStreamPlayer.play()
 		$AnimationPlayer.play("Atirando")
 		var objeto_tiro = cena_tiro.instance()
 		
