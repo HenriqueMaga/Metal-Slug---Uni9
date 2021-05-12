@@ -28,8 +28,8 @@ font_data = ExtResource( 2 )
 script = ExtResource( 3 )
 
 [node name="main screen" type="Sprite" parent="."]
-position = Vector2( 514.974, 334.746 )
-scale = Vector2( 1.34864, 1.17715 )
+position = Vector2( 512.511, 338.396 )
+scale = Vector2( 0.32675, 0.285201 )
 texture = ExtResource( 1 )
 __meta__ = {
 "_edit_lock_": true
