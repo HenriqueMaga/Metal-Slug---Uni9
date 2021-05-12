@@ -98,7 +98,7 @@ autostart = true
 stream = ExtResource( 5 )
 
 [node name="descer_laser" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 50.0
 autostart = true
 
 [connection signal="timeout" from="Tempo_Inimigo" to="." method="cria_inimigo"]
