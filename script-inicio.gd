@@ -8,6 +8,8 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	#$ColorRect/Servidor.text = ScriptGlobal.site
+	#$ColorRect/Email.text = ScriptGlobal.email
 	pass
 
 
@@ -18,16 +20,6 @@ func _process(delta):
 	if enter:
 		print("Apertei")
 		$ColorRect.visible = true
-		$Timer.one_shot = true
-		$"Label username".visible = true
-		$"Label senha".visible = true
-		$username.visible = true
-		$senha.visible = true
-		$Button.visible = true
-		$musica.visible = true
-		$"ativar-musica".visible = true
-		$sons.visible = true
-		$"ativar-sons".visible = true
 	#get_tree().change_scene("res://cena-missão-1.tscn")
 
 func piscar():
@@ -46,21 +38,56 @@ func ativar_musica(button_pressed):
 		ScriptGlobal.status_musica = true
 		$AudioStreamPlayer.play()
 		if ScriptGlobal.status_sons:
-			$Ok.play()
+			$ColorRect/Ok.play()
 	else:
 		ScriptGlobal.status_musica = false
 		$AudioStreamPlayer.stop()
 		$AudioStreamPlayer.autoplay = false
 		if ScriptGlobal.status_sons:
-			$Ok.play()
+			$ColorRect/Ok.play()
 
 
 func ativar_sons(button_pressed):
 	if button_pressed == true:
 		ScriptGlobal.status_sons = true
 		if ScriptGlobal.status_sons:
-			$Ok.play()
+			$ColorRect/Ok.play()
 	else:
 		ScriptGlobal.status_sons = false
 		if ScriptGlobal.status_sons:
-			$Ok.play()
+			$ColorRect/Ok.play()
+
+#-------------------------------------------------------------------------------
+# requests de usuário
+func enviar_requisicao_POST():
+	
+	var url_requisicao = ScriptGlobal.getUrl_login()
+	var dados_envio = "username="   +$ColorRect/username.text+   "&password="+   $ColorRect/senha.text
+	print(dados_envio)
+	var cabecalho  = ["Content-Type: application/x-www-form-urlencoded"] #para POST usamos application/json
+	$HTTPRequest.request(url_requisicao, cabecalho, false,HTTPClient.METHOD_POST, dados_envio) # requisicao para POST
+
+	
+
+func _on_HTTPRequest_request_completed(result, response_code, headers, body):
+	var json = JSON.parse(body.get_string_from_utf8())
+	print(json.result)
+	if (json.result and json.result.size()>0):
+		print(json.result)
+		ScriptGlobal.id_usuario = json.result["id"]
+		ScriptGlobal.username = json.result["username"]
+		ScriptGlobal.usuario = json.result["name"]
+		
+		$ColorRect/Button.visible = true
+		$ColorRect/bemvindo.text += json.result["name"]
+		$ColorRect/bemvindo.visible = true
+		print($ColorRect/bemvindo.text)
+		
+	else:
+		print(result)
+		print(response_code)
+	
+
+
+func login():
+	enviar_requisicao_POST()

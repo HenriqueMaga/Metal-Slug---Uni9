@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://imagens/main screen.png" type="Texture" id=1]
 [ext_resource path="res://fontes/fipps/Fipps-Regular.otf" type="DynamicFontData" id=2]
@@ -24,6 +24,15 @@ font_data = ExtResource( 2 )
 [sub_resource type="DynamicFont" id=6]
 font_data = ExtResource( 2 )
 
+[sub_resource type="DynamicFont" id=7]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=8]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=9]
+font_data = ExtResource( 2 )
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 3 )
 
@@ -31,9 +40,6 @@ script = ExtResource( 3 )
 position = Vector2( 512.511, 338.396 )
 scale = Vector2( 0.32675, 0.285201 )
 texture = ExtResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 margin_left = 141.068
@@ -66,112 +72,139 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="ColorRect"]
 visible = false
-margin_left = 348.5
-margin_top = 507.5
-margin_right = 680.5
-margin_bottom = 577.5
+margin_left = 354.0
+margin_top = 511.5
+margin_right = 686.0
+margin_bottom = 581.5
 custom_fonts/font = SubResource( 2 )
 text = "JOGAR!"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label username" type="RichTextLabel" parent="."]
-visible = false
-margin_left = 117.0
-margin_top = 123.0
-margin_right = 501.0
-margin_bottom = 180.0
+[node name="Label username" type="RichTextLabel" parent="ColorRect"]
+margin_left = 122.5
+margin_top = 127.0
+margin_right = 506.5
+margin_bottom = 184.0
 custom_fonts/normal_font = SubResource( 3 )
 text = "Digite seu nome de usuário:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="username" type="TextEdit" parent="."]
-visible = false
-margin_left = 538.5
-margin_top = 113.5
-margin_right = 847.5
-margin_bottom = 169.5
+[node name="username" type="TextEdit" parent="ColorRect"]
+margin_left = 544.0
+margin_top = 117.5
+margin_right = 853.0
+margin_bottom = 173.5
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label senha" type="RichTextLabel" parent="."]
-visible = false
-margin_left = 251.5
-margin_top = 188.5
-margin_right = 589.5
-margin_bottom = 241.5
+[node name="Label senha" type="RichTextLabel" parent="ColorRect"]
+margin_left = 257.0
+margin_top = 192.5
+margin_right = 595.0
+margin_bottom = 245.5
 custom_fonts/normal_font = SubResource( 4 )
 text = "Digite sua senha:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="senha" type="TextEdit" parent="."]
-visible = false
-margin_left = 539.0
-margin_top = 197.0
-margin_right = 852.0
-margin_bottom = 248.0
+[node name="senha" type="TextEdit" parent="ColorRect"]
+margin_left = 544.5
+margin_top = 201.0
+margin_right = 857.5
+margin_bottom = 252.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="musica" type="RichTextLabel" parent="."]
-visible = false
-margin_left = 277.5
-margin_top = 287.5
-margin_right = 482.5
-margin_bottom = 337.5
+[node name="musica" type="RichTextLabel" parent="ColorRect"]
+margin_left = 283.0
+margin_top = 291.5
+margin_right = 488.0
+margin_bottom = 341.5
 custom_fonts/normal_font = SubResource( 5 )
 text = "Ativar músicas"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ativar-musica" type="CheckButton" parent="."]
-visible = false
-margin_left = 540.5
-margin_top = 284.0
-margin_right = 616.5
-margin_bottom = 330.0
+[node name="ativar-musica" type="CheckButton" parent="ColorRect"]
+margin_left = 546.0
+margin_top = 288.0
+margin_right = 622.0
+margin_bottom = 334.0
 pressed = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="sons" type="RichTextLabel" parent="."]
-visible = false
-margin_left = 319.5
-margin_top = 337.5
-margin_right = 497.5
-margin_bottom = 382.5
+[node name="sons" type="RichTextLabel" parent="ColorRect"]
+margin_left = 325.0
+margin_top = 341.5
+margin_right = 503.0
+margin_bottom = 386.5
 custom_fonts/normal_font = SubResource( 6 )
 text = "Ativar sons"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ativar-sons" type="CheckButton" parent="."]
-visible = false
-margin_left = 539.0
-margin_top = 343.5
-margin_right = 615.0
-margin_bottom = 383.5
+[node name="ativar-sons" type="CheckButton" parent="ColorRect"]
+margin_left = 544.5
+margin_top = 347.5
+margin_right = 620.5
+margin_bottom = 387.5
 pressed = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Ok" type="AudioStreamPlayer" parent="."]
+[node name="Ok" type="AudioStreamPlayer" parent="ColorRect"]
 stream = ExtResource( 5 )
 
+[node name="cadastrar" type="Button" parent="ColorRect"]
+margin_left = 268.5
+margin_top = 439.0
+margin_right = 441.5
+margin_bottom = 487.0
+custom_fonts/font = SubResource( 7 )
+text = "Cadastrar"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="login" type="Button" parent="ColorRect"]
+margin_left = 599.5
+margin_top = 439.0
+margin_right = 772.5
+margin_bottom = 487.0
+custom_fonts/font = SubResource( 8 )
+text = "Logar"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bemvindo" type="RichTextLabel" parent="ColorRect"]
+visible = false
+margin_left = 16.0
+margin_top = 6.5
+margin_right = 693.0
+margin_bottom = 63.5
+custom_fonts/normal_font = SubResource( 9 )
+text = "Bem vindo, "
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
 [connection signal="timeout" from="Timer" to="." method="piscar"]
-[connection signal="pressed" from="Button" to="." method="iniciar_jogo"]
-[connection signal="toggled" from="ativar-musica" to="." method="ativar_musica"]
-[connection signal="toggled" from="ativar-sons" to="." method="ativar_sons"]
+[connection signal="pressed" from="ColorRect/Button" to="." method="iniciar_jogo"]
+[connection signal="toggled" from="ColorRect/ativar-musica" to="." method="ativar_musica"]
+[connection signal="toggled" from="ColorRect/ativar-sons" to="." method="ativar_sons"]
+[connection signal="pressed" from="ColorRect/login" to="." method="login"]
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]

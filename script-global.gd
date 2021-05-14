@@ -1,5 +1,13 @@
 extends Node
 
+var site = "http://metalsluguni9.freevar.com"
+func getUrl_login():
+	return site + "/jogo_autenticar.php"
+	
+var id_usuario
+var username
+var usuario
+
 var qtd_vidas = 50
 var qtd_pontos = 0
 var valor_ponto_inimigo = 10
