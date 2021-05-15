@@ -139,11 +139,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="senha" type="TextEdit" parent="ColorRect"]
+[node name="senha" type="LineEdit" parent="ColorRect"]
 margin_left = 544.5
 margin_top = 201.0
 margin_right = 857.5
 margin_bottom = 252.0
+secret = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -286,11 +287,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="novaSenha" type="TextEdit" parent="Cadastro"]
-margin_left = 608.0
+[node name="novaSenha" type="LineEdit" parent="Cadastro"]
+margin_left = 606.5
 margin_top = 264.1
-margin_right = 818.0
+margin_right = 816.5
 margin_bottom = 304.1
+secret = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="criarUsuario" type="Button" parent="Cadastro"]
 margin_left = 354.5
