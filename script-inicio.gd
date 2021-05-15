@@ -8,6 +8,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$ColorRect/erro.visible = false
 	if ScriptGlobal.id_usuario != null:
 		$ColorRect/bemvindo.visible = true
 		$ColorRect/bemvindo.text + ScriptGlobal.usuario
@@ -24,6 +25,7 @@ func _process(delta):
 	if enter:
 		print("Apertei")
 		$ColorRect.visible = true
+		$Timer.one_shot = true
 	#get_tree().change_scene("res://cena-missão-1.tscn")
 
 func piscar():
@@ -88,6 +90,7 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 		print($ColorRect/bemvindo.text)
 		
 	else:
+		$ColorRect/erro.visible = true
 		print(result)
 		print(response_code)
 	
