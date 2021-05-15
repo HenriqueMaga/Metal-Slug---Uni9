@@ -2,7 +2,11 @@ extends Node
 
 var site = "http://metalsluguni9.freevar.com"
 func getUrl_login():
-	return site + "/jogo_autenticar.php"
+	return site + "/db/jogo_autenticar.php"
+func obter_url_insere_ranking():
+	return site + "/db/jogo_novo_record.php"
+func obter_url_insere_usuario():
+	return site + "/db/jogo_novo_user.php"
 	
 var id_usuario
 var username

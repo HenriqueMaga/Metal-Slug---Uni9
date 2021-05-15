@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://imagens/main screen.png" type="Texture" id=1]
 [ext_resource path="res://fontes/fipps/Fipps-Regular.otf" type="DynamicFontData" id=2]
@@ -33,6 +33,27 @@ font_data = ExtResource( 2 )
 [sub_resource type="DynamicFont" id=9]
 font_data = ExtResource( 2 )
 
+[sub_resource type="DynamicFont" id=10]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=11]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=12]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=13]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=14]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=15]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=16]
+font_data = ExtResource( 2 )
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 3 )
 
@@ -40,6 +61,9 @@ script = ExtResource( 3 )
 position = Vector2( 512.511, 338.396 )
 scale = Vector2( 0.32675, 0.285201 )
 texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 margin_left = 141.068
@@ -200,11 +224,153 @@ margin_bottom = 63.5
 custom_fonts/normal_font = SubResource( 9 )
 text = "Bem vindo, "
 
-[node name="HTTPRequest" type="HTTPRequest" parent="."]
+[node name="HTTPRequestLogin" type="HTTPRequest" parent="."]
+
+[node name="Cadastro" type="ColorRect" parent="."]
+visible = false
+margin_left = -9.0
+margin_top = -5.0
+margin_right = 1039.0
+margin_bottom = 680.0
+color = Color( 0.0705882, 0.0705882, 0.0431373, 0.784314 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="SolicitarNome" type="RichTextLabel" parent="Cadastro"]
+margin_left = 318.0
+margin_top = 140.5
+margin_right = 566.0
+margin_bottom = 184.5
+custom_fonts/normal_font = SubResource( 10 )
+text = "Digite seu nome:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SolicitarUsername" type="RichTextLabel" parent="Cadastro"]
+margin_left = 29.5
+margin_top = 198.5
+margin_right = 549.5
+margin_bottom = 241.5
+custom_fonts/normal_font = SubResource( 11 )
+text = "Digite seu nome de usuário para login:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SolicitarSenha" type="RichTextLabel" parent="Cadastro"]
+margin_left = 324.0
+margin_top = 258.5
+margin_right = 556.0
+margin_bottom = 318.5
+custom_fonts/normal_font = SubResource( 12 )
+text = "Crie uma senha:"
+
+[node name="novoName" type="TextEdit" parent="Cadastro"]
+margin_left = 608.0
+margin_top = 136.5
+margin_right = 818.0
+margin_bottom = 176.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="novoUsername" type="TextEdit" parent="Cadastro"]
+margin_left = 608.0
+margin_top = 200.8
+margin_right = 818.0
+margin_bottom = 240.8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="novaSenha" type="TextEdit" parent="Cadastro"]
+margin_left = 608.0
+margin_top = 264.1
+margin_right = 818.0
+margin_bottom = 304.1
+
+[node name="criarUsuario" type="Button" parent="Cadastro"]
+margin_left = 354.5
+margin_top = 434.0
+margin_right = 700.5
+margin_bottom = 497.0
+custom_fonts/font = SubResource( 13 )
+text = "Criar novo usuário"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="voltar" type="Button" parent="Cadastro"]
+margin_left = 474.0
+margin_top = 523.0
+margin_right = 610.0
+margin_bottom = 579.0
+rect_scale = Vector2( 0.8, 0.8 )
+custom_fonts/font = SubResource( 14 )
+text = "Voltar"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="erroDigitando" type="RichTextLabel" parent="Cadastro"]
+visible = false
+margin_left = 831.5
+margin_top = 141.5
+margin_right = 1019.5
+margin_bottom = 314.5
+custom_colors/default_color = Color( 0.721569, 0.0588235, 0.0588235, 1 )
+text = "Preencha todos os campos!
+
+
+
+
+Preencha todos os campos!
+
+
+
+Preencha todos os campos!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="sucesso" type="RichTextLabel" parent="Cadastro"]
+visible = false
+margin_left = 337.0
+margin_top = 356.0
+margin_right = 721.0
+margin_bottom = 401.0
+custom_fonts/normal_font = SubResource( 15 )
+custom_colors/default_color = Color( 0.141176, 0.862745, 0.0784314, 1 )
+text = "Usuário criado com sucesso!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="erro" type="RichTextLabel" parent="Cadastro"]
+visible = false
+margin_left = 361.0
+margin_top = 353.0
+margin_right = 699.0
+margin_bottom = 404.0
+custom_fonts/normal_font = SubResource( 16 )
+custom_colors/default_color = Color( 0.721569, 0.0588235, 0.0588235, 1 )
+text = "Erro ao criar seu usuário "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HTTPRequestCadastro" type="HTTPRequest" parent="Cadastro"]
 
 [connection signal="timeout" from="Timer" to="." method="piscar"]
 [connection signal="pressed" from="ColorRect/Button" to="." method="iniciar_jogo"]
 [connection signal="toggled" from="ColorRect/ativar-musica" to="." method="ativar_musica"]
 [connection signal="toggled" from="ColorRect/ativar-sons" to="." method="ativar_sons"]
+[connection signal="pressed" from="ColorRect/cadastrar" to="." method="ir_para_cadastro"]
 [connection signal="pressed" from="ColorRect/login" to="." method="login"]
-[connection signal="request_completed" from="HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]
+[connection signal="request_completed" from="HTTPRequestLogin" to="." method="_on_HTTPRequest_request_completed"]
+[connection signal="pressed" from="Cadastro/criarUsuario" to="." method="criar_usuario"]
+[connection signal="pressed" from="Cadastro/voltar" to="." method="voltar_para_inicio"]
+[connection signal="request_completed" from="Cadastro/HTTPRequestCadastro" to="." method="cadastro_completo"]

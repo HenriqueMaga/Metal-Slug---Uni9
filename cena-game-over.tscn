@@ -145,5 +145,32 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[node name="erro" type="RichTextLabel" parent="."]
+visible = false
+margin_left = 848.0
+margin_top = 43.0
+margin_right = 1010.0
+margin_bottom = 74.0
+custom_colors/default_color = Color( 0.721569, 0.0588235, 0.0588235, 1 )
+text = "Erro salvando seu record"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="sucesso" type="RichTextLabel" parent="."]
+visible = false
+margin_left = 845.5
+margin_top = 20.5
+margin_right = 998.5
+margin_bottom = 45.5
+custom_colors/default_color = Color( 0.141176, 0.862745, 0.0784314, 1 )
+text = "Seu record foi salvo!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="button_up" from="jogarNovamente" to="." method="jogar_novamente"]
 [connection signal="button_up" from="menu" to="." method="ir_para_menu"]
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]
