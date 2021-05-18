@@ -91,6 +91,7 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 		
 	else:
 		$ColorRect/erro.visible = true
+		$ColorRect/escondeErro.start()
 		print(result)
 		print(response_code)
 	
@@ -143,3 +144,7 @@ func cadastro_completo(result, response_code, headers, body):
 		$Cadastro/erro.visible = true
 		print(json.result)
 		print(response_code)
+
+
+func esconde_erro():
+	$ColorRect/erro.visible = false

@@ -33,9 +33,6 @@ font_data = ExtResource( 2 )
 [sub_resource type="DynamicFont" id=9]
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=17]
-font_data = ExtResource( 2 )
-
 [sub_resource type="DynamicFont" id=10]
 font_data = ExtResource( 2 )
 
@@ -55,6 +52,9 @@ font_data = ExtResource( 2 )
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=16]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=17]
 font_data = ExtResource( 2 )
 
 [node name="Node2D" type="Node2D"]
@@ -235,12 +235,15 @@ margin_top = 529.0
 margin_right = 964.0
 margin_bottom = 580.0
 rect_scale = Vector2( 0.9, 0.9 )
-custom_fonts/normal_font = SubResource( 17 )
+custom_fonts/normal_font = SubResource( 10 )
 custom_colors/default_color = Color( 0.898039, 0.847059, 0.0784314, 1 )
 text = "Erro no login, verifique os dados ou crie um novo usuário"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="escondeErro" type="Timer" parent="ColorRect"]
+wait_time = 3.0
 
 [node name="HTTPRequestLogin" type="HTTPRequest" parent="."]
 
@@ -261,7 +264,7 @@ margin_left = 318.0
 margin_top = 140.5
 margin_right = 566.0
 margin_bottom = 184.5
-custom_fonts/normal_font = SubResource( 10 )
+custom_fonts/normal_font = SubResource( 11 )
 text = "Digite seu nome:"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -272,7 +275,7 @@ margin_left = 29.5
 margin_top = 198.5
 margin_right = 549.5
 margin_bottom = 241.5
-custom_fonts/normal_font = SubResource( 11 )
+custom_fonts/normal_font = SubResource( 12 )
 text = "Digite seu nome de usuário para login:"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -283,7 +286,7 @@ margin_left = 324.0
 margin_top = 258.5
 margin_right = 556.0
 margin_bottom = 318.5
-custom_fonts/normal_font = SubResource( 12 )
+custom_fonts/normal_font = SubResource( 13 )
 text = "Crie uma senha:"
 
 [node name="novoName" type="TextEdit" parent="Cadastro"]
@@ -319,7 +322,7 @@ margin_left = 354.5
 margin_top = 434.0
 margin_right = 700.5
 margin_bottom = 497.0
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 14 )
 text = "Criar novo usuário"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -331,7 +334,7 @@ margin_top = 523.0
 margin_right = 610.0
 margin_bottom = 579.0
 rect_scale = Vector2( 0.8, 0.8 )
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 15 )
 text = "Voltar"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -364,7 +367,7 @@ margin_left = 337.0
 margin_top = 356.0
 margin_right = 721.0
 margin_bottom = 401.0
-custom_fonts/normal_font = SubResource( 15 )
+custom_fonts/normal_font = SubResource( 16 )
 custom_colors/default_color = Color( 0.141176, 0.862745, 0.0784314, 1 )
 text = "Usuário criado com sucesso!"
 __meta__ = {
@@ -377,7 +380,7 @@ margin_left = 361.0
 margin_top = 353.0
 margin_right = 699.0
 margin_bottom = 404.0
-custom_fonts/normal_font = SubResource( 16 )
+custom_fonts/normal_font = SubResource( 17 )
 custom_colors/default_color = Color( 0.721569, 0.0588235, 0.0588235, 1 )
 text = "Erro ao criar seu usuário "
 __meta__ = {
@@ -392,6 +395,7 @@ __meta__ = {
 [connection signal="toggled" from="ColorRect/ativar-sons" to="." method="ativar_sons"]
 [connection signal="pressed" from="ColorRect/cadastrar" to="." method="ir_para_cadastro"]
 [connection signal="pressed" from="ColorRect/login" to="." method="login"]
+[connection signal="timeout" from="ColorRect/escondeErro" to="." method="esconde_erro"]
 [connection signal="request_completed" from="HTTPRequestLogin" to="." method="_on_HTTPRequest_request_completed"]
 [connection signal="pressed" from="Cadastro/criarUsuario" to="." method="criar_usuario"]
 [connection signal="pressed" from="Cadastro/voltar" to="." method="voltar_para_inicio"]
