@@ -51,7 +51,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.06, 0.12, 0.18, 0.24 ),
+"times": PoolRealArray( 0, 0.08, 0.14, 0.2, 0.24 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 2,
 "values": [ Rect2( 105, 353, 135, 100 ), Rect2( 262, 359, 137, 100 ), Rect2( 422, 359, 101, 100 ), Rect2( 559, 357, 100, 106 ), Rect2( 707, 360, 87, 103 ) ]
@@ -76,7 +76,6 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=6]
 resource_name = "agaixado-atirando"
 length = 0.25
-loop = true
 step = 0.02
 tracks/0/type = "value"
 tracks/0/path = NodePath("png jogo:region_rect")
@@ -121,7 +120,7 @@ position = Vector2( -2.28626, 2.55126 )
 scale = Vector2( 0.606386, 0.608487 )
 texture = ExtResource( 2 )
 region_enabled = true
-region_rect = Rect2( 1178, 1871, 92, 66 )
+region_rect = Rect2( 1102, 4, 103, 82 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
 position = Vector2( -4.57254, 1.76471 )

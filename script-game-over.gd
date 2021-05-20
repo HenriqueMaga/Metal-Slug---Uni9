@@ -39,13 +39,15 @@ func ir_para_menu():
 
 
 func novo_ranking_POST():
-	
-	var url_requisicao = ScriptGlobal.obter_url_insere_ranking()
-	var total = ScriptGlobal.qtd_pontos + ScriptGlobal.tempo_decorrido + ScriptGlobal.qtd_inimigos_derrotados
-	var dados_envio = "id=" +str(ScriptGlobal.id_usuario)+ "&inimigos="+ str(ScriptGlobal.qtd_inimigos_derrotados) +"&tempo="+ str(ScriptGlobal.tempo_decorrido) +"&pontos="+ str(ScriptGlobal.qtd_pontos) +"&total="+ str(total)
-	print(dados_envio)
-	var cabecalho  = ["Content-Type: application/x-www-form-urlencoded"] #para POST usamos application/json
-	$HTTPRequest.request(url_requisicao, cabecalho, false,HTTPClient.METHOD_POST, dados_envio) # requisicao para POST
+	if ScriptGlobal.id_usuario != null:
+		var url_requisicao = ScriptGlobal.obter_url_insere_ranking()
+		var total = ScriptGlobal.qtd_pontos + ScriptGlobal.tempo_decorrido + ScriptGlobal.qtd_inimigos_derrotados
+		var dados_envio = "id=" +str(ScriptGlobal.id_usuario)+ "&inimigos="+ str(ScriptGlobal.qtd_inimigos_derrotados) +"&tempo="+ str(ScriptGlobal.tempo_decorrido) +"&pontos="+ str(ScriptGlobal.qtd_pontos) +"&total="+ str(total)
+		print(dados_envio)
+		var cabecalho  = ["Content-Type: application/x-www-form-urlencoded"] #para POST usamos application/json
+		$HTTPRequest.request(url_requisicao, cabecalho, false,HTTPClient.METHOD_POST, dados_envio) # requisicao para POST
+	else:
+		$erro.visible = true
 	
 	
 

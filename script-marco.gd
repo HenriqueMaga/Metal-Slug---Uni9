@@ -42,7 +42,7 @@ func _physics_process(delta):
 			scale.x *= -1
 			$Position2D.scale.x *= -1
 			
-		if noChao==true:
+		if noChao==true && $AnimationPlayer.current_animation != "Atirando":
 			$AnimationPlayer.play("Andando")
 #--------------
 	elif direita:
@@ -52,7 +52,7 @@ func _physics_process(delta):
 			scale.x *= -1
 			$Position2D.scale.x *= -1
 		
-		if noChao==true:
+		if noChao==true && $AnimationPlayer.current_animation != "Atirando":
 			$AnimationPlayer.play("Andando")
 #--------------
 	elif soltouEsquerda || soltouDireita || soltouCima || soltouBaixo || soltouTiro:
@@ -73,8 +73,10 @@ func _physics_process(delta):
 		if ScriptGlobal.status_sons == true && ScriptGlobal.laser_equipado == false:
 			$AudioStreamPlayer.play()
 		if agaixado == false:
+			$AnimationPlayer.stop()
 			$AnimationPlayer.play("Atirando")
 		else:
+			$AnimationPlayer.stop()
 			$AnimationPlayer.play("agaixado-atirando")
 		var objeto_tiro = cena_tiro.instance()
 		
@@ -90,7 +92,7 @@ func _physics_process(delta):
 	move_and_slide(andar)
 	
 	if baixo:
-		if !$AnimationPlayer.current_animation == "agaixado-atirando":
+		if $AnimationPlayer.current_animation != "agaixado-atirando":
 			$AnimationPlayer.play("Agaixar")
 		$"png jogo".position.y = 40
 		$Position2D.position.y = 40
@@ -122,6 +124,5 @@ func ajustar_posicao():
 
 func colisao_com_chao(body):
 	if body.name == "StaticBody2D":
-		print("encostei no chão")
 		pulando = false
 		noChao = true
