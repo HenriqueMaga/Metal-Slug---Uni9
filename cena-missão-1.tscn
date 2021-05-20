@@ -101,8 +101,13 @@ stream = ExtResource( 5 )
 wait_time = 50.0
 autostart = true
 
+[node name="descer_vida" type="Timer" parent="."]
+wait_time = 120.0
+autostart = true
+
 [connection signal="timeout" from="Tempo_Inimigo" to="." method="cria_inimigo"]
 [connection signal="timeout" from="Tempo_Alien" to="." method="cria_alien"]
 [connection signal="timeout" from="Aumenta dificuldade" to="." method="aumenta_dificuldade"]
 [connection signal="finished" from="AudioStreamPlayer" to="." method="repetir"]
 [connection signal="timeout" from="descer_laser" to="." method="descer_laser"]
+[connection signal="timeout" from="descer_vida" to="." method="descer_vida"]

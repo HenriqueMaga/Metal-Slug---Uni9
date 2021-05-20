@@ -2,6 +2,7 @@ extends Node2D
 
 
 func _ready():
+	$descer_vida.wait_time = 30
 	if ScriptGlobal.status_musica == false:
 		$AudioStreamPlayer.autoplay = false
 		$AudioStreamPlayer.stop()
@@ -101,3 +102,20 @@ func descer_laser():
 		objeto_laser.global_position.x = rand_range(50,1000)
 		objeto_laser.setar_posicao_da_caixa(510)
 	get_tree().root.add_child(objeto_laser)
+
+
+func descer_vida():
+	var altura = rand_range(0,3)
+	var cena_vida = preload("res://cena-vida.tscn")
+	var objeto_vida = cena_vida.instance()
+	
+	if altura < 1:
+		objeto_vida.global_position.x = rand_range(50,450)
+		objeto_vida.setar_posicao_da_vida(280)
+	elif altura < 2:
+		objeto_vida.global_position.x = rand_range(650,1000)
+		objeto_vida.setar_posicao_da_vida(280)
+	else:
+		objeto_vida.global_position.x = rand_range(50,1000)
+		objeto_vida.setar_posicao_da_vida(512)
+	get_tree().root.add_child(objeto_vida)
