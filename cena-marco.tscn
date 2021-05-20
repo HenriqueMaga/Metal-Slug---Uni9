@@ -1,7 +1,7 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://script-marco.gd" type="Script" id=1]
-[ext_resource path="res://imagens/png jogo.png" type="Texture" id=2]
+[ext_resource path="res://imagens/marco completo.png" type="Texture" id=2]
 [ext_resource path="res://musicas/tiro normal.mp3" type="AudioStream" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -21,11 +21,11 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 2,
-"values": [ Rect2( 2475, 4615, 232, 170 ), Rect2( 2708, 4608, 232, 170 ), Rect2( 3048, 4416, 239, 170 ), Rect2( 3392, 4416, 232, 170 ) ]
+"values": [ Rect2( 957, 1948, 89, 66 ), Rect2( 1047, 1945, 89, 66 ), Rect2( 1178, 1871, 92, 66 ), Rect2( 1311, 1871, 90, 66 ) ]
 }
 
 [sub_resource type="Animation" id=3]
-length = 0.9
+length = 0.75
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("png jogo:region_rect")
@@ -34,10 +34,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 2,
-"values": [ Rect2( 1520, 17, 211, 279 ), Rect2( 1946, 10, 198, 287 ), Rect2( 2387, 17, 225, 279 ), Rect2( 2846, 10, 225, 287 ), Rect2( 3287, 17, 191, 279 ), Rect2( 3699, 5, 204, 280 ), Rect2( 4120, 5, 225, 280 ), Rect2( 4512, 5, 252, 259 ), Rect2( 4968, 6, 218, 279 ) ]
+"values": [ Rect2( 752, 168, 77, 111 ), Rect2( 923, 170, 87, 109 ), Rect2( 1100, 168, 87, 111 ), Rect2( 1270, 170, 74, 109 ), Rect2( 1430, 166, 79, 108 ), Rect2( 1592, 166, 88, 108 ), Rect2( 1744, 166, 98, 100 ), Rect2( 1920, 166, 85, 108 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -51,10 +51,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.06, 0.12, 0.18 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.06, 0.12, 0.18, 0.24 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 2,
-"values": [ Rect2( 677, 504, 355, 259 ), Rect2( 272, 489, 348, 259 ), Rect2( 1093, 504, 260, 259 ), Rect2( 1445, 500, 260, 272 ) ]
+"values": [ Rect2( 105, 353, 135, 100 ), Rect2( 262, 359, 137, 100 ), Rect2( 422, 359, 101, 100 ), Rect2( 559, 357, 100, 106 ), Rect2( 707, 360, 87, 103 ) ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -70,10 +70,29 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 2,
-"values": [ Rect2( 72, 10, 211, 266 ), Rect2( 501, 10, 205, 266 ), Rect2( 857, 10, 205, 266 ) ]
+"values": [ Rect2( 28, 168, 81, 103 ), Rect2( 194, 168, 79, 103 ), Rect2( 331, 168, 79, 103 ) ]
 }
 
 [sub_resource type="Animation" id=6]
+resource_name = "agaixado-atirando"
+length = 0.25
+loop = true
+step = 0.02
+tracks/0/type = "value"
+tracks/0/path = NodePath("png jogo:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.06, 0.12, 0.18, 0.24 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 2,
+"values": [ Rect2( 254, 10, 138, 76 ), Rect2( 489, 10, 141, 76 ), Rect2( 727, 10, 103, 76 ), Rect2( 929, 10, 103, 76 ), Rect2( 1102, 4, 103, 82 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.9
 tracks/0/type = "value"
 tracks/0/path = NodePath("png jogo:region_rect")
 tracks/0/interp = 1
@@ -84,7 +103,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 2,
-"values": [ Rect2( 47, 1925, 204, 335 ), Rect2( 358, 1906, 204, 321 ), Rect2( 677, 1908, 204, 307 ), Rect2( 1056, 1918, 207, 287 ), Rect2( 1472, 1910, 205, 259 ), Rect2( 1846, 1902, 204, 252 ), Rect2( 2279, 1886, 204, 259 ), Rect2( 2709, 1878, 205, 286 ), Rect2( 3080, 1861, 204, 305 ) ]
+"values": [ Rect2( 18, 908, 79, 130 ), Rect2( 138, 901, 79, 124 ), Rect2( 261, 902, 80, 118 ), Rect2( 408, 905, 79, 111 ), Rect2( 569, 902, 79, 101 ), Rect2( 713, 899, 80, 98 ), Rect2( 881, 893, 79, 100 ), Rect2( 1047, 890, 79, 111 ), Rect2( 1190, 883, 79, 118 ) ]
 }
 
 [node name="Node2D" type="Node2D"]
@@ -95,10 +114,11 @@ scale = Vector2( 1.00518, 1.00171 )
 script = ExtResource( 1 )
 
 [node name="png jogo" type="Sprite" parent="KinematicBody2D"]
-scale = Vector2( 0.245969, 0.246821 )
+position = Vector2( -2.28626, 2.55126 )
+scale = Vector2( 0.606386, 0.608487 )
 texture = ExtResource( 2 )
 region_enabled = true
-region_rect = Rect2( 1445, 500, 260, 272 )
+region_rect = Rect2( 1047, 1945, 89, 66 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
 position = Vector2( -4.57254, 1.76471 )
@@ -111,7 +131,8 @@ anims/Agaixar = SubResource( 2 )
 anims/Andando = SubResource( 3 )
 anims/Atirando = SubResource( 4 )
 anims/Descansando = SubResource( 5 )
-anims/pulando = SubResource( 6 )
+anims/agaixado-atirando = SubResource( 6 )
+anims/pulando = SubResource( 7 )
 
 [node name="Position2D" type="Position2D" parent="KinematicBody2D"]
 position = Vector2( 17.9383, -13.0592 )

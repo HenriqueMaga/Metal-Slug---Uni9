@@ -8,6 +8,7 @@ var cena_tiro = preload("res://cena-tiro.tscn")
 var velocidadeY = 0
 var andar = Vector2(0, 0)
 var posicao = "direita"
+var agaixado = false
 var noChao = true
 var tiro
 
@@ -69,7 +70,10 @@ func _physics_process(delta):
 	if tiro:
 		if ScriptGlobal.status_sons == true && ScriptGlobal.laser_equipado == false:
 			$AudioStreamPlayer.play()
-		$AnimationPlayer.play("Atirando")
+		if agaixado == false:
+			$AnimationPlayer.play("Atirando")
+		else:
+			$AnimationPlayer.play("agaixado-atirando")
 		var objeto_tiro = cena_tiro.instance()
 		
 		#Essa parte inverte o tiro, mas conflita com a colisão do tiro com outros corpos
@@ -84,11 +88,19 @@ func _physics_process(delta):
 	move_and_slide(andar)
 	
 	if baixo:
-		$AnimationPlayer.play("Agaixar")
-		scale.y = 0.5
+		if !$AnimationPlayer.current_animation == "agaixado-atirando":
+			$AnimationPlayer.play("Agaixar")
+		$"png jogo".position.y = 40
+		$Position2D.position.y = 40
+		$CollisionShape2D.scale.y = 0.3
+		$CollisionShape2D.position.y = 40
+		agaixado = true
 	if soltouBaixo:
-		print("levantando")
-		scale.y = 1.002
+		$"png jogo".position.y = 0
+		$Position2D.position.y = -13.059
+		$CollisionShape2D.scale.y = 1
+		$CollisionShape2D.position.y = 1.765
+		agaixado = false
 		
 func ajustar_posicao():
 	if (global_position.x < 60):

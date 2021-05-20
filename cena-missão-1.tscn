@@ -73,13 +73,13 @@ shape = SubResource( 4 )
 position = Vector2( 1035.21, 267 )
 
 [node name="direitaB" type="Position2D" parent="."]
-position = Vector2( 1065.26, 501 )
+position = Vector2( 1065.26, 497 )
 
 [node name="esquerdaC" type="Position2D" parent="."]
 position = Vector2( -16.617, 267 )
 
 [node name="esquerdaB" type="Position2D" parent="."]
-position = Vector2( -22.981, 501 )
+position = Vector2( -22.981, 496 )
 
 [node name="Tempo_Inimigo" type="Timer" parent="."]
 autostart = true

@@ -35,10 +35,14 @@ func morrer():
 func colisao(body):
 	#Inimigos morrem por colisão
 	if body.name != "StaticBody2D":
+		print(body.agaixado)
 		morto = true
 		morrer()
 		ScriptGlobal.qtd_pontos += ScriptGlobal.valor_ponto_inimigo
 		ScriptGlobal.qtd_inimigos_derrotados += 1
+	if body.name != "StaticBody2D" && body.agaixado == true:
+		ScriptGlobal.qtd_vidas -= 1
+		print("Sofri dano ",ScriptGlobal.qtd_vidas)
 	#else:
 		#print("Inimigo no chão")
 		
