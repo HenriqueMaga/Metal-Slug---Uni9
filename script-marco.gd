@@ -10,6 +10,7 @@ var andar = Vector2(0, 0)
 var posicao = "direita"
 var agaixado = false
 var noChao = true
+var pulando = false
 var tiro
 
 func _physics_process(delta):
@@ -58,7 +59,8 @@ func _physics_process(delta):
 		$AnimationPlayer.play("Descansando")
 #--------------
 	if noChao==true:
-		if pular:
+		if pular && pulando == false:
+			pulando = true
 			noChao = false
 			$AnimationPlayer.play("pulando")
 			velocidadeY = -velPulo 
@@ -94,12 +96,14 @@ func _physics_process(delta):
 		$Position2D.position.y = 40
 		$CollisionShape2D.scale.y = 0.3
 		$CollisionShape2D.position.y = 40
+		$Area2D/CollisionShape2D.position.y = 40
 		agaixado = true
 	if soltouBaixo:
 		$"png jogo".position.y = 0
 		$Position2D.position.y = -13.059
 		$CollisionShape2D.scale.y = 1
 		$CollisionShape2D.position.y = 1.765
+		$Area2D/CollisionShape2D.position.y = 0
 		agaixado = false
 		
 func ajustar_posicao():
@@ -114,3 +118,10 @@ func ajustar_posicao():
 		global_position.y = 60
 	if (global_position.y > get_viewport().size.y-60):
 		global_position.y = get_viewport().size.y-60
+
+
+func colisao_com_chao(body):
+	if body.name == "StaticBody2D":
+		print("encostei no chão")
+		pulando = false
+		noChao = true

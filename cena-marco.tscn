@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://script-marco.gd" type="Script" id=1]
 [ext_resource path="res://imagens/marco completo.png" type="Texture" id=2]
@@ -106,6 +106,9 @@ tracks/0/keys = {
 "values": [ Rect2( 18, 908, 79, 130 ), Rect2( 138, 901, 79, 124 ), Rect2( 261, 902, 80, 118 ), Rect2( 408, 905, 79, 111 ), Rect2( 569, 902, 79, 101 ), Rect2( 713, 899, 80, 98 ), Rect2( 881, 893, 79, 100 ), Rect2( 1047, 890, 79, 111 ), Rect2( 1190, 883, 79, 118 ) ]
 }
 
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 13.6656, 37.187 )
+
 [node name="Node2D" type="Node2D"]
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="."]
@@ -118,7 +121,7 @@ position = Vector2( -2.28626, 2.55126 )
 scale = Vector2( 0.606386, 0.608487 )
 texture = ExtResource( 2 )
 region_enabled = true
-region_rect = Rect2( 1047, 1945, 89, 66 )
+region_rect = Rect2( 1178, 1871, 92, 66 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
 position = Vector2( -4.57254, 1.76471 )
@@ -139,3 +142,11 @@ position = Vector2( 17.9383, -13.0592 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="KinematicBody2D"]
 stream = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="KinematicBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D/Area2D"]
+position = Vector2( -7.03467, 1.76465 )
+shape = SubResource( 8 )
+
+[connection signal="body_entered" from="KinematicBody2D/Area2D" to="KinematicBody2D" method="colisao_com_chao"]
