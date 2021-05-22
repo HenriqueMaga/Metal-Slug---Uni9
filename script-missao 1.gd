@@ -82,9 +82,9 @@ func aumenta_dificuldade():
 	print("novo tempo de dificuldade Alien = ",$Tempo_Alien.wait_time )
 
 
-func repetir():
-	if ScriptGlobal.status_musica == true:
-		$AudioStreamPlayer.play()
+#func repetir():
+	#if ScriptGlobal.status_musica == true:
+		#$AudioStreamPlayer.play()
 
 
 func descer_laser():
@@ -119,3 +119,27 @@ func descer_vida():
 		objeto_vida.global_position.x = rand_range(50,1000)
 		objeto_vida.setar_posicao_da_vida(512)
 	get_tree().root.add_child(objeto_vida)
+
+
+func que_venha_a_chuva():
+	if ScriptGlobal.chuva_de_misseis == true && ScriptGlobal.boss_vivo == true:
+		
+		var objeto_missel = preload("res://cena-missel-boss.tscn").instance()
+		objeto_missel.global_position.x = rand_range(50,600)
+		objeto_missel.global_position.y = -5
+		
+		get_tree().root.add_child(objeto_missel)
+		
+func invoca_o_boss():
+	$AudioStreamPlayer.stop()
+	$BossTheme.play()
+	var objeto_boss = preload("res://cena-boss.tscn").instance()
+	objeto_boss.global_position.x = 1260
+	objeto_boss.global_position.y = 350
+	get_tree().root.add_child(objeto_boss)
+
+
+func prepara_para_boss():
+	$Tempo_Alien.stop()
+	$Tempo_Inimigo.stop()
+	$AudioStreamPlayer.stop()

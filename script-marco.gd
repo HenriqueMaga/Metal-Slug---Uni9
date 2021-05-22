@@ -43,7 +43,10 @@ func _physics_process(delta):
 			$Position2D.scale.x *= -1
 			
 		if noChao==true && $AnimationPlayer.current_animation != "Atirando":
-			$AnimationPlayer.play("Andando")
+			if baixo && $AnimationPlayer.current_animation != "agaixado-atirando":
+				$AnimationPlayer.play("Agaixar")
+			else:
+				$AnimationPlayer.play("Andando")
 #--------------
 	elif direita:
 		andar.x = velocidade
@@ -53,7 +56,10 @@ func _physics_process(delta):
 			$Position2D.scale.x *= -1
 		
 		if noChao==true && $AnimationPlayer.current_animation != "Atirando":
-			$AnimationPlayer.play("Andando")
+			if baixo && $AnimationPlayer.current_animation != "agaixado-atirando":
+				$AnimationPlayer.play("Agaixar")
+			else:
+				$AnimationPlayer.play("Andando")
 #--------------
 	elif soltouEsquerda || soltouDireita || soltouCima || soltouBaixo || soltouTiro:
 		$AnimationPlayer.play("Descansando")
@@ -89,8 +95,9 @@ func _physics_process(delta):
 		objeto_tiro.global_position = $Position2D.global_position
 		get_tree().root.add_child(objeto_tiro)
 	
-	move_and_slide(andar)
+	andar = move_and_slide(andar,Vector2(0,-1))
 	
+	#----------------------------------
 	if baixo:
 		if $AnimationPlayer.current_animation != "agaixado-atirando":
 			$AnimationPlayer.play("Agaixar")
@@ -124,5 +131,6 @@ func ajustar_posicao():
 
 func colisao_com_chao(body):
 	if body.name == "StaticBody2D":
+		velocidadeY = 0
 		pulando = false
 		noChao = true

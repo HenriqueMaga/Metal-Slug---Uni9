@@ -1,0 +1,102 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://imagens/boss.png" type="Texture" id=1]
+[ext_resource path="res://script-fogo-boss.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "apagando"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 2,
+"values": [ Rect2( 120, 9729, 321, 243 ), Rect2( 648, 9726, 293, 242 ), Rect2( 1197, 9719, 262, 246 ), Rect2( 1722, 9732, 242, 230 ), Rect2( 2249, 9719, 236, 234 ), Rect2( 2779, 9732, 208, 224 ), Rect2( 3258, 9751, 193, 189 ), Rect2( 3739, 9763, 136, 158 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "carregando"
+length = 1.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 2,
+"values": [ Rect2( 637, 8474, 84, 137 ), Rect2( 866, 8462, 96, 164 ), Rect2( 1096, 8465, 102, 168 ), Rect2( 1329, 8468, 102, 155 ), Rect2( 1575, 8462, 102, 168 ), Rect2( 1861, 8468, 96, 177 ), Rect2( 2144, 8468, 99, 183 ), Rect2( 2438, 8465, 96, 143 ), Rect2( 2709, 8465, 99, 130 ), Rect2( 2991, 8465, 96, 127 ), Rect2( 3328, 8468, 96, 130 ), Rect2( 3572, 8465, 96, 133 ), Rect2( 3851, 8465, 96, 136 ), Rect2( 4092, 8452, 95, 153 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "crescendo"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 2,
+"values": [ Rect2( 200, 9197, 134, 84 ), Rect2( 518, 9191, 190, 96 ), Rect2( 896, 9178, 271, 109 ), Rect2( 1397, 9163, 287, 133 ), Rect2( 1952, 9153, 299, 143 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "queimando"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 2,
+"values": [ Rect2( 1952, 9153, 299, 143 ), Rect2( 2509, 9147, 305, 149 ), Rect2( 3072, 9122, 337, 174 ), Rect2( 3683, 9097, 337, 193 ), Rect2( 4227, 9091, 346, 215 ), Rect2( 3683, 9097, 337, 193 ), Rect2( 3072, 9122, 337, 174 ), Rect2( 2509, 9147, 305, 149 ) ]
+}
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Area2D"]
+scale = Vector2( 0.692745, 0.497089 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 1952, 9153, 299, 143 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2( 53.2013, 0 )
+scale = Vector2( 0.670878, 1 )
+polygon = PoolVector2Array( 101.825, 21.7908, 37.8315, -0.483017, -13.0802, -10.3825, -66.8204, -19.2214, -97.5795, -5.07922, -97.5795, 15.7804, -72.4772, 29.2155, 1.06189, 30.2761 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Area2D"]
+autoplay = "carregando"
+anims/apagando = SubResource( 1 )
+anims/carregando = SubResource( 2 )
+anims/crescendo = SubResource( 3 )
+anims/queimando = SubResource( 4 )
+next/carregando = "crescendo"
+next/crescendo = "queimando"
+
+[node name="aquetaEsseFogo" type="Timer" parent="."]
+wait_time = 7.0
+autostart = true
+
+[connection signal="body_entered" from="Area2D" to="." method="dano_no_marco"]
+[connection signal="animation_finished" from="Area2D/AnimationPlayer" to="." method="apaga"]
+[connection signal="timeout" from="aquetaEsseFogo" to="." method="apaga_fogo"]

@@ -16,8 +16,11 @@ func _process(delta):
 	translate(mov)
 
 func colisao(area):
-	if area.name == "Inimigo" ||  area.name == "Alien":
+	if area.name == "Inimigo" ||  area.name == "Alien" :
 		area.morrer()
+		$CollisionShape2D.set_deferred("disabled",true)
+		$Sprite.visible = false
+	elif  area.name == "Boss":
 		$CollisionShape2D.set_deferred("disabled",true)
 		$Sprite.visible = false
 

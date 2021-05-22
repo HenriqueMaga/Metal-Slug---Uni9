@@ -1,0 +1,162 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://script-boss.gd" type="Script" id=1]
+[ext_resource path="res://imagens/boss.png" type="Texture" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "cima"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("cima:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 2,
+"values": [ Rect2( 710, 2344, 484, 264 ), Rect2( 1483, 2326, 483, 265 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "baixo-andando-furado"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("baixo:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 2,
+"values": [ Rect2( 734, 1684, 556, 158 ), Rect2( 1706, 1684, 552, 161 ), Rect2( 2686, 1687, 556, 158 ), Rect2( 3506, 1684, 552, 161 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "furado-fogo"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("baixo:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 2,
+"values": [ Rect2( 623, 4130, 556, 165 ), Rect2( 1438, 4111, 553, 184 ), Rect2( 2287, 4105, 552, 190 ), Rect2( 3109, 4090, 553, 205 ), Rect2( 623, 4510, 552, 212 ), Rect2( 1484, 4492, 552, 224 ), Rect2( 2379, 4486, 552, 230 ), Rect2( 3304, 4479, 552, 237 ), Rect2( 4296, 4473, 552, 243 ), Rect2( 653, 4960, 552, 250 ), Rect2( 1475, 4951, 552, 256 ), Rect2( 2408, 4945, 552, 262 ), Rect2( 3387, 4939, 553, 268 ), Rect2( 4326, 4932, 552, 275 ), Rect2( 654, 5422, 552, 280 ), Rect2( 1498, 5412, 552, 287 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "missel"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("missel:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 2,
+"values": [ Rect2( 2380, 2352, 186, 124 ), Rect2( 2667, 2364, 186, 118 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "explodindo"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("explodindo:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 2,
+"values": [ Rect2( 2129, 12328, 208, 171 ), Rect2( 2638, 12325, 215, 177 ), Rect2( 3210, 12319, 202, 183 ), Rect2( 3649, 12322, 199, 177 ), Rect2( 4140, 12328, 184, 162 ), Rect2( 4578, 12334, 162, 159 ), Rect2( 4997, 12334, 162, 156 ), Rect2( 5414, 12334, 162, 153 ), Rect2( 5793, 12334, 158, 140 ), Rect2( 1142, 12750, 153, 130 ), Rect2( 1574, 12750, 143, 118 ), Rect2( 2040, 12750, 143, 109 ) ]
+}
+
+[node name="Node2D" type="Node2D"]
+position = Vector2( 777.377, 325.415 )
+script = ExtResource( 1 )
+
+[node name="Boss" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Boss"]
+position = Vector2( 0.5, -30.25 )
+polygon = PoolVector2Array( -87.3271, -123.415, -98.5771, -7.41489, -196.577, 74.8351, -196.577, 248.235, 249.423, 247.235, 241.173, -34.5149, 58.6729, -35.7649, 25.1729, -124.015 )
+
+[node name="cima" type="Sprite" parent="Boss"]
+position = Vector2( 35.6127, 24.3952 )
+scale = Vector2( 0.890598, 0.890599 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 710, 2344, 484, 264 )
+
+[node name="animacao-cima" type="AnimationPlayer" parent="Boss"]
+autoplay = "cima"
+anims/cima = SubResource( 1 )
+
+[node name="baixo" type="Sprite" parent="Boss"]
+position = Vector2( 36.1258, 103.531 )
+scale = Vector2( 0.878167, 0.878167 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 3506, 1684, 552, 161 )
+
+[node name="animacao-baixo" type="AnimationPlayer" parent="Boss"]
+autoplay = "baixo-andando-furado"
+anims/baixo-andando-furado = SubResource( 2 )
+anims/furado-fogo = SubResource( 3 )
+
+[node name="missel" type="Sprite" parent="Boss"]
+position = Vector2( -29.5538, -86.9838 )
+scale = Vector2( 0.800413, 0.800413 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 2380, 2352, 186, 124 )
+
+[node name="animacao-missel" type="AnimationPlayer" parent="Boss"]
+autoplay = "missel"
+anims/missel = SubResource( 4 )
+
+[node name="posicaoMissel" type="Position2D" parent="Boss"]
+position = Vector2( -72.1249, -103.945 )
+
+[node name="posicaoFogo" type="Position2D" parent="Boss"]
+position = Vector2( -86.2389, 149.913 )
+
+[node name="explodindo" type="Sprite" parent="Boss"]
+visible = false
+position = Vector2( 53.4144, 37.2999 )
+scale = Vector2( 2.74504, 2.74504 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 2040, 12750, 143, 109 )
+
+[node name="animacao-explodindo" type="AnimationPlayer" parent="Boss"]
+anims/explodindo = SubResource( 5 )
+
+[node name="disparaMissel" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="disparaFogo" type="Timer" parent="."]
+wait_time = 10.0
+
+[connection signal="area_entered" from="Boss" to="." method="colisao"]
+[connection signal="body_entered" from="Boss" to="." method="encostou_morreu"]
+[connection signal="animation_finished" from="Boss/animacao-baixo" to="." method="fica_parado"]
+[connection signal="animation_finished" from="Boss/animacao-explodindo" to="." method="derrotou"]
+[connection signal="timeout" from="disparaMissel" to="." method="disparar"]
+[connection signal="timeout" from="disparaFogo" to="." method="dispara_fogo"]
