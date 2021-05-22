@@ -10,6 +10,7 @@ func _ready():
 		$AudioStreamPlayer.autoplay = true
 		$AudioStreamPlayer.play()
 		
+#func _process(delta):
 	
 func cria_inimigo():
 	var direcao = rand_range(0,4)
@@ -76,8 +77,8 @@ func cria_alien():
 
 
 func aumenta_dificuldade():
-	$Tempo_Inimigo.wait_time *= 0.5
-	$Tempo_Alien.wait_time *= 0.5
+	$Tempo_Inimigo.wait_time *= 0.6
+	$Tempo_Alien.wait_time *= 0.6
 	print("novo tempo de dificuldade soldado = ",$Tempo_Inimigo.wait_time )
 	print("novo tempo de dificuldade Alien = ",$Tempo_Alien.wait_time )
 
@@ -131,6 +132,7 @@ func que_venha_a_chuva():
 		get_tree().root.add_child(objeto_missel)
 		
 func invoca_o_boss():
+	$soldadoDuranteBoss.start()
 	$AudioStreamPlayer.stop()
 	$BossTheme.play()
 	var objeto_boss = preload("res://cena-boss.tscn").instance()
@@ -143,3 +145,27 @@ func prepara_para_boss():
 	$Tempo_Alien.stop()
 	$Tempo_Inimigo.stop()
 	$AudioStreamPlayer.stop()
+	
+
+
+
+func reativar_inimigos():
+	if ScriptGlobal.boss_vivo == false && ScriptGlobal.inimigos_reativados == false:
+		ScriptGlobal.inimigos_reativados = true
+		$soldadoDuranteBoss.stop()
+		$reativarInimigos.stop()
+		
+		$BossTheme.stop()
+		$AudioStreamPlayer.play()
+		$Tempo_Alien.wait_time = 0.5
+		$Tempo_Inimigo.wait_time = 0.6
+		
+		$Tempo_Alien.start()
+		$Tempo_Inimigo.start()
+
+
+func soldado_durante_boss():
+	var objeto_inimigo = preload("res://cena-inimigo.tscn").instance()
+	objeto_inimigo.global_position = $esquerdaC.global_position
+	objeto_inimigo.get_node("Inimigo").setar_direcao(-1)
+	get_tree().root.add_child(objeto_inimigo)

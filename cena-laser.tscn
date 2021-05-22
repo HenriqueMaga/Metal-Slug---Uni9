@@ -9,24 +9,24 @@ extents = Vector2( 527.9, 2.80011 )
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Tiro-Aliado" type="Area2D" parent="."]
+[node name="Laser" type="Area2D" parent="."]
 script = ExtResource( 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiro-Aliado"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Laser"]
 position = Vector2( 528, -0.199982 )
 shape = SubResource( 1 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Tiro-Aliado"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Laser"]
 stream = ExtResource( 3 )
 
-[node name="Sprite" type="Sprite" parent="Tiro-Aliado"]
+[node name="Sprite" type="Sprite" parent="Laser"]
 position = Vector2( 534.191, 0.0462151 )
 scale = Vector2( 0.522988, -0.0172998 )
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 0, 656, 2035, 263 )
 
-[node name="Sprite2" type="Sprite" parent="Tiro-Aliado"]
+[node name="Sprite2" type="Sprite" parent="Laser"]
 visible = false
 position = Vector2( 534.191, 0.046 )
 scale = Vector2( 0.523, -0.017 )
@@ -38,5 +38,5 @@ region_rect = Rect2( 5, 0, 2034, 262 )
 wait_time = 0.02
 autostart = true
 
-[connection signal="area_entered" from="Tiro-Aliado" to="." method="colisao"]
-[connection signal="timeout" from="Timer" to="Tiro-Aliado" method="some_com_o_laser"]
+[connection signal="area_entered" from="Laser" to="." method="colisao"]
+[connection signal="timeout" from="Timer" to="Laser" method="some_com_o_laser"]

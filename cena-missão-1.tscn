@@ -117,10 +117,17 @@ autostart = true
 
 [node name="desligaInimigos" type="Timer" parent="."]
 wait_time = 125.0
+one_shot = true
 autostart = true
 
 [node name="BossTheme" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
+
+[node name="reativarInimigos" type="Timer" parent="."]
+autostart = true
+
+[node name="soldadoDuranteBoss" type="Timer" parent="."]
+wait_time = 6.0
 
 [connection signal="timeout" from="Tempo_Inimigo" to="." method="cria_inimigo"]
 [connection signal="timeout" from="Tempo_Alien" to="." method="cria_alien"]
@@ -131,3 +138,5 @@ stream = ExtResource( 7 )
 [connection signal="timeout" from="chuva_de_misseis" to="." method="que_venha_a_chuva"]
 [connection signal="timeout" from="boss" to="." method="invoca_o_boss"]
 [connection signal="timeout" from="desligaInimigos" to="." method="prepara_para_boss"]
+[connection signal="timeout" from="reativarInimigos" to="." method="reativar_inimigos"]
+[connection signal="timeout" from="soldadoDuranteBoss" to="." method="soldado_durante_boss"]

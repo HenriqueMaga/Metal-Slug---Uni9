@@ -47,7 +47,7 @@ func colisao(body):
 		
 func colisao_com_tiro(area):
 	#inimigos ficavam imortais porque o tiro é um area, esse método garante que eles morrem por tiro
-	if area.name == "Tiro-Aliado":
+	if area.name == "Tiro-Aliado" || area.name == "Laser":
 		morto = true
 		morrer()
 		ScriptGlobal.qtd_pontos += ScriptGlobal.valor_ponto_inimigo

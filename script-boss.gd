@@ -26,14 +26,6 @@ func _process(delta):
 		protocoloDeFogo = true
 		$"Boss/animacao-baixo".play("furado-fogo")
 		$disparaFogo.start()
-	
-	if vida_boss <=0 :
-		ScriptGlobal.boss_vivo = false
-		$Boss/explodindo.visible = true
-		$Boss/cima.visible = false
-		$Boss/baixo.visible = false
-		$Boss/missel.visible = false
-		$"Boss/animacao-explodindo".play("explodindo")
 		
 
 
@@ -67,6 +59,28 @@ func colisao(body):
 			$"Boss/cima".modulate = corOriginal
 			$"Boss/baixo".modulate = corOriginal
 			$"Boss/missel".modulate = corOriginal
+	if body.name == "Laser":
+		vida_boss -= 0.25
+		print(vida_boss)
+		if $"Boss/cima".modulate == corOriginal:
+			$"Boss/cima".modulate = "873d3d"
+			$"Boss/baixo".modulate = "873d3d"
+			$"Boss/missel".modulate = "873d3d"
+		else:
+			$"Boss/cima".modulate = corOriginal
+			$"Boss/baixo".modulate = corOriginal
+			$"Boss/missel".modulate = corOriginal
+	
+	#Derrotando o boss, toca a eplosão e da os pontos
+	if vida_boss <=0 :
+		ScriptGlobal.qtd_pontos += 2000
+		ScriptGlobal.boss_vivo = false
+		$Boss/explodindo.visible = true
+		$Boss/cima.visible = false
+		$Boss/baixo.visible = false
+		$Boss/missel.visible = false
+		$"Boss/animacao-explodindo".play("explodindo")
+		
 
 
 func disparar():

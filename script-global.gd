@@ -20,11 +20,11 @@ var qtd_inimigos_derrotados = 0
 var tempo_decorrido = 0
 var fim_de_jogo = false
 
-var personagem = 1
 var status_musica = true
 var status_sons = true
 var chuva_de_misseis = false
 var boss_vivo = true
+var inimigos_reativados = false
 
 var laser_equipado = false
 var combustivel_do_laser = 0
