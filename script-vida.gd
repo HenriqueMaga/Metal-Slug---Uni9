@@ -22,16 +22,14 @@ func setar_posicao_da_vida(y):
 	#recebe até onde o item descerá no raio trator
 	descerAte = y
 
-func equipar_laser(body):
+func equipar_vida(body):
 	if body.name != "StaticBody2D":
 		if ScriptGlobal.status_sons == true:
 			$AudioStreamPlayer.play()
 		$Area2D/CollisionShape2D.set_deferred("disabled",true)
 		$Area2D/Sprite.visible = false
-		if ScriptGlobal.qtd_pontos >= 3000:
-			ScriptGlobal.qtd_vidas += 16
-		else:
-			ScriptGlobal.qtd_vidas += 10
+		#Vida nerfada agora que tudo está mais fraco por ter o boss
+		ScriptGlobal.qtd_vidas += 10
 
 
 func sumir_com_a_vida():
