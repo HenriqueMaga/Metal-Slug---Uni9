@@ -17,6 +17,9 @@ func _process(delta):
 		global_position.y = posicaoY 
 		$Area2D/Sprite.scale.x *= 4
 		$Area2D/CollisionPolygon2D.scale.x *= 8
+		
+	if ScriptGlobal.fim_de_jogo == true:
+		queue_free()
 
 
 func apaga_fogo():

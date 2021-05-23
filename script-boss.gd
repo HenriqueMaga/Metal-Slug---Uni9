@@ -26,7 +26,9 @@ func _process(delta):
 		protocoloDeFogo = true
 		$"Boss/animacao-baixo".play("furado-fogo")
 		$disparaFogo.start()
-		
+	
+	if ScriptGlobal.fim_de_jogo == true:
+		queue_free()
 
 
 #func mudar_animacao():

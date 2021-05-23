@@ -7,6 +7,9 @@ func _ready():
 
 func _process(delta):
 	translate(Vector2(0,2))
+	
+	if ScriptGlobal.fim_de_jogo == true:
+		queue_free()
 
 
 func dano_no_marco(body):

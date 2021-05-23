@@ -132,9 +132,11 @@ func que_venha_a_chuva():
 		get_tree().root.add_child(objeto_missel)
 		
 func invoca_o_boss():
+	if ScriptGlobal.status_musica == true:
+		$AudioStreamPlayer.stop()
+		$BossTheme.play()
+	
 	$soldadoDuranteBoss.start()
-	$AudioStreamPlayer.stop()
-	$BossTheme.play()
 	var objeto_boss = preload("res://cena-boss.tscn").instance()
 	objeto_boss.global_position.x = 1260
 	objeto_boss.global_position.y = 350
@@ -142,9 +144,10 @@ func invoca_o_boss():
 
 
 func prepara_para_boss():
+	if ScriptGlobal.status_musica == true:
+		$AudioStreamPlayer.stop()
 	$Tempo_Alien.stop()
 	$Tempo_Inimigo.stop()
-	$AudioStreamPlayer.stop()
 	
 
 
@@ -155,8 +158,9 @@ func reativar_inimigos():
 		$soldadoDuranteBoss.stop()
 		$reativarInimigos.stop()
 		
-		$BossTheme.stop()
-		$AudioStreamPlayer.play()
+		if ScriptGlobal.status_musica == true:
+			$BossTheme.stop()
+			$AudioStreamPlayer.play()
 		$Tempo_Alien.wait_time = 0.5
 		$Tempo_Inimigo.wait_time = 0.6
 		

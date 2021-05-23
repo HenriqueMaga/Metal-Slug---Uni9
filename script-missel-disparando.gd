@@ -8,6 +8,9 @@ func _ready():
 
 func _process(delta):
 	translate(Vector2(-8,0))
+	
+	if ScriptGlobal.fim_de_jogo == true:
+		queue_free()
 
 
 func deletar():

@@ -37,6 +37,9 @@ func jogar_novamente():
 	fim_de_jogo = false
 	laser_equipado = false
 	combustivel_do_laser = 0
+	chuva_de_misseis = false
+	boss_vivo = true
+	inimigos_reativados = false
 	
 func redefinir_config():
 	qtd_vidas = 50
