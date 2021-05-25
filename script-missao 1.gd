@@ -2,7 +2,8 @@ extends Node2D
 
 
 func _ready():
-	$descer_vida.wait_time = 30
+	$descer_vida.wait_time = 40
+	$descer_laser.wait_time = 60
 	if ScriptGlobal.status_musica == false:
 		$AudioStreamPlayer.autoplay = false
 		$AudioStreamPlayer.stop()
