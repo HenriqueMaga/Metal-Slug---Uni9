@@ -77,6 +77,7 @@ func colisao(body):
 	if vida_boss <=0 :
 		ScriptGlobal.qtd_pontos += 2000
 		ScriptGlobal.boss_vivo = false
+		$Boss/CollisionPolygon2D.set_deferred("disabled",true)
 		$Boss/explodindo.visible = true
 		$Boss/cima.visible = false
 		$Boss/baixo.visible = false

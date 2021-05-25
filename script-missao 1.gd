@@ -170,6 +170,16 @@ func reativar_inimigos():
 
 func soldado_durante_boss():
 	var objeto_inimigo = preload("res://cena-inimigo.tscn").instance()
-	objeto_inimigo.global_position = $esquerdaC.global_position
-	objeto_inimigo.get_node("Inimigo").setar_direcao(-1)
-	get_tree().root.add_child(objeto_inimigo)
+	var direcao = rand_range(0,4)
+	
+	
+	if direcao < 1:
+		objeto_inimigo.global_position = $esquerdaB.global_position
+		objeto_inimigo.get_node("Inimigo").setar_direcao(-1)
+		get_tree().root.add_child(objeto_inimigo)
+		
+	elif direcao < 2:
+		objeto_inimigo.global_position = $esquerdaC.global_position
+		objeto_inimigo.get_node("Inimigo").setar_direcao(-1)
+		get_tree().root.add_child(objeto_inimigo)
+
