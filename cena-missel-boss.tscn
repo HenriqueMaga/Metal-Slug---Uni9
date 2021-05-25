@@ -1,10 +1,26 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://imagens/boss.png" type="Texture" id=1]
 [ext_resource path="res://script-missel-boss.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6.15361, 17.807 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "explodindo"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 2,
+"values": [ Rect2( 5793, 12334, 158, 140 ), Rect2( 1142, 12750, 153, 130 ), Rect2( 1574, 12750, 143, 118 ), Rect2( 2040, 12750, 143, 109 ) ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "voando"
@@ -37,10 +53,12 @@ position = Vector2( 0.70713, -1.49582 )
 scale = Vector2( 0.347284, 0.347284 )
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 4308, 11052, 65, 114 )
+region_rect = Rect2( 2040, 12750, 143, 109 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Area2D"]
 autoplay = "voando"
+anims/explodindo = SubResource( 3 )
 anims/voando = SubResource( 2 )
 
 [connection signal="body_entered" from="Area2D" to="." method="dano_no_marco"]
+[connection signal="animation_finished" from="Area2D/AnimationPlayer" to="." method="explodiu"]
