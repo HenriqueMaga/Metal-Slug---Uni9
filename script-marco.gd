@@ -34,7 +34,9 @@ func _physics_process(delta):
 	var soltouBaixo = Input.is_action_just_released("ui_down")
 	var soltouTiro = Input.is_action_just_released("tiro")
 	
-	andar = Vector2()
+	andar.x = 0
+	andar.y += gravidade * delta
+	
 	if esquerda:
 		andar.x = -velocidade
 		if posicao == "direita":
@@ -69,10 +71,10 @@ func _physics_process(delta):
 			pulando = true
 			noChao = false
 			$AnimationPlayer.play("pulando")
-			velocidadeY = -velPulo 
-		else:
-			velocidadeY += gravidade * delta
-		andar.y = velocidadeY
+			andar.y = -velPulo 
+			#velocidadeY = -velPulo 
+			
+		
 	noChao = true
 	
 	if tiro:
